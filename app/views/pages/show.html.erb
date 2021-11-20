@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Back', @notebook, class: 'btn btn-outline-secondary' %>
+<h4>
+  <%= @page.title %>
+  <%= link_to 'Edit', edit_notebook_page_path(@notebook,@page),class: 'btn btn-outline-primary' %>
+</h4>
+
+
