@@ -13,3 +13,19 @@
       color: #777777
     }
 }
+
+.text-content {
+  &:hover {
+    cursor: pointer;
+    background-color: #f7f7f7;
+  }
+}
+
+.image-content {
+  text-align: center;
+  img{
+    max-width: 80%;
+  }
+}
+
+

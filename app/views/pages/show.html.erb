@@ -1,9 +1,110 @@
-<p id="notice"><%= notice %></p>
+<h4 class='d-flex justify-content-between  mb-4'>
+  <div>
+    <%= @page.title %>
+    <%= link_to 'Edit', edit_notebook_page_path(@notebook,@page),class: 'btn btn-outline-primary' %>
+  </div>
 
-<%= link_to 'Back', @notebook, class: 'btn btn-outline-secondary' %>
-<h4>
-  <%= @page.title %>
-  <%= link_to 'Edit', edit_notebook_page_path(@notebook,@page),class: 'btn btn-outline-primary' %>
+  <div>
+    <%= form_with(model: [@notebook, @page, @paragraph], html: { class: 'float-start'}) do  |form|%>
+      <%= form.submit "Add paragraph", class: 'btn btn-primary me-1' %>
+    <% end %>
+    <%= form_with(model: [@notebook, @page, @image_element], html: { class: 'float-start'}) do  |form|%>
+      <%= form.submit "Add Image", class: 'btn btn-primary me-1' %>
+    <% end %>
+     <%= form_with(model: [@notebook, @page, @checklist], html: { class: 'float-start'}) do  |form|%>
+      <%= form.submit "Add Checklist", class: 'btn btn-primary' %>
+    <% end %>
+  </div>
 </h4>
 
+<div class="col-lg-10 offset-lg-1">
+
+  <% @page.paragraphs.each do |paragraph| %>
+    <% if paragraph.persisted? %>
+      <div class="text-content p-4 mb-2">
+        <% if paragraph.content.present? %>
+          <%= paragraph.content %>
+        <% else %>
+          <i>Click here to add text </i>
+        <% end %>
+      </div>
+      <div class="form-content d-none p-4 mb-2">
+        <%= form_with(model: [@notebook, @page, paragraph]) do  |form|%>
+          <%= form.rich_text_area :content %>
+          <div class="buttons mt-3">
+            <%= form.submit "Save", class: 'btn btn-primary' %>
+            <a href="#" class="cancel btn btn-secondary">Cancel</a>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+
+
+<% @page.image_elements.each do |image_element| %>
+  <div class="image-content p4 mb-2">
+    <% if image_element.persisted? %>
+      <% if image_element.image.present? %>
+        <%= image_tag(image_element.image) %>
+      <% else %>
+        <%= form_with(model: [@notebook, @page, image_element]) do  |form|%>
+          <%= form.file_field :image %>
+          <div class="buttons mt-3">
+            <%= form.submit "Save", class: 'btn btn-primary' %>
+            <!-- <a href="#" class="cancel btn btn-secondary">Cancel</a> -->
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<% @page.checklists.each do |checklist| %>
+  <% if checklist.persisted? %>
+  <div class="p-4">
+    <div class="text-content mb-2">
+      <h4><%=checklist.title %></h4>
+    </div>
+    <div class="form-content d-none mb-2">
+      <%= form_with(model: [@notebook, @page, checklist]) do  |form|%>
+      <label>Checklist Title</label>
+        <%= form.text_field :title, class: 'form-control' %>
+        <div class="buttons mt-3">
+          <%= form.submit "Save", class: 'btn btn-primary' %>
+          <a href="#" class="cancel btn btn-secondary">Cancel</a>
+        </div>
+      <% end %>
+    </div>
+      <div class="checklist_item-form">
+         <%= form_with(model: [@notebook, @page,checklist, checklist.new_item]) do  |form|%>
+         <h5><b>Add a new checklist item</b></h5>
+        <label>Title</label>
+          <%= form.text_field :title, class: 'form-control' %>
+          <div class="buttons mt-3">
+            <%= form.submit "Save", class: 'btn btn-primary' %>
+            <!-- <a href="#" class="cancel btn btn-secondary">Cancel</a> -->
+          </div>
+        <% end %>
+      </div>
+      <div class="checklist-items">
+        <table class="table">
+          <tr>
+            <th colspan='2'>Title</th>
+          </tr>
+          <% checklist.checklist_items.each do |checklist_item| %>
+            <% if checklist_item.persisted? %>
+              <tr>
+                <td><%= checklist_item.title %></td>
+                <td>
+                  <%= link_to 'Delete',notebook_page_checklist_checklist_item_path(@notebook,@page,checklist, checklist_item), method: :delete, data: { confirm:"Are you sure?" } %>
+                </td>
+              </tr>
+            <% end  %>
+          <% end %>
+        </table>
+      </div>
+  </div>
+  <% end %>
+<% end %>
+</div>
 

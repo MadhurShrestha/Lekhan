@@ -1,19 +1,27 @@
 class PagesController < ApplicationController
   before_action :set_notebook
   before_action :set_page, only: %i[ show edit update destroy ]
+  before_action :set_base_breadcrumbs, only: [:show, :new, :edit]
 
 
   # GET /pages/1 or /pages/1.json
   def show
+    add_breadcrumb(@page.title)
+    @paragraph = @page.paragraphs.build
+    @image_element = @page.image_elements.build
+    @checklist = @page.checklists.build
   end
 
   # GET /pages/new
   def new
+    add_breadcrumb('New Page')
     @page = Page.new
   end
 
   # GET /pages/1/edit
   def edit
+    add_breadcrumb(@page.title, notebook_page_path(@notebook,@page))
+    add_breadcrumb('Edit')
   end
 
   # POST /pages or /pages.json
@@ -58,4 +66,10 @@ class PagesController < ApplicationController
     def page_params
       params.require(:page).permit(:title)
     end
+
+    def set_base_breadcrumbs
+      add_breadcrumb("Notebooks",notebooks_path)
+      add_breadcrumb(@notebook.title,notebook_path(@notebook))
+    end
+
 end
