@@ -23,11 +23,11 @@ class ChecklistItem < ApplicationRecord
   def color_class
     case status
     when 'not-started'
-      'secondary'
+      'btn btn-outline-secondary'
     when 'in-progress'
-      'info'
+      'btn btn-outline-info'
     when 'complete'
-      'success'
+      'btn btn-outline-success'
     end
   end
 
