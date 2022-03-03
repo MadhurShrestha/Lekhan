@@ -7,15 +7,14 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-
 import "../stylesheets/application"
+import "./quill-editor.js"
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-require("trix")
-require("@rails/actiontext")
+
 
 document.addEventListener('turbolinks:load', () => {
   document.addEventListener('click', () => {
@@ -39,3 +38,5 @@ document.addEventListener('turbolinks:load', () => {
 })
 
 import "controllers"
+
+

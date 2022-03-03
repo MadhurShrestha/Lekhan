@@ -4,14 +4,14 @@
 <% if paragraph.persisted? %>
       <div class="text-content p-4 mb-2">
         <% if paragraph.content.present? %>
-          <%= paragraph.content %>
+          <%= paragraph.content.html_safe? %>
         <% else %>
           <i>Click here to add text </i>
         <% end %>
       </div>
       <div class="form-content d-none p-4 mb-2">
         <%= form_with(model: [notebook, page, paragraph]) do  |form|%>
-          <%= form.rich_text_area :content %>
+          <%= form.hidden_field :body, class: 'paragraph-content' %>
           <div class="buttons mt-3">
             <%= form.submit "Save", class: 'btn btn-primary' %>
             <a href="#" class="cancel btn btn-secondary">Cancel</a>

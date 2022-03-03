@@ -12,6 +12,9 @@
  *
  *= require_tree .
  *= require_self
+ *= require 'quill/dist/quill.core.css'
+ *= require 'quill/dist/quill.snow.css'
+
  */
 
 require rails_bootstrap_forms
