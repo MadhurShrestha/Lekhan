@@ -8,7 +8,7 @@ Quill.register('modules/imageResize', ImageResize);
 const MAX_FILE_SIZE = 1000000
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    if(!document.querySelector('input[class=article-content]')){
+    if(!document.querySelector('input[class=paragraph-content]')){
     return;
   }
   var quill = new Quill('#editor-container', {
@@ -32,12 +32,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
           backgroundColor: 'black',
           border: 'none',
           color: 'white'
+
         },
         modules: [ 'Resize', 'DisplaySize', 'Toolbar' ]
       }
     },
     value: document.querySelector('input[class=paragraph-content]').value,
-    theme: 'snow'paragraph
+    theme: 'snow'
   });
 
   document.querySelector('form').onsubmit = function () {
