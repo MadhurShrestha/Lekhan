@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       }
     },
     value: document.querySelector('input[class=paragraph-content]').value,
-    theme: 'snow'
+    theme: `snow`
   });
 
   document.querySelector('form').onsubmit = function () {

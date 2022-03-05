@@ -3,8 +3,8 @@
 
 <% if paragraph.persisted? %>
       <div class="text-content p-4 mb-2">
-        <% if paragraph.content.present? %>
-          <%= paragraph.content %>
+        <% if paragraph.present? %>
+          <%= paragraph %>
         <% else %>
           <i>Click here to add text </i>
         <% end %>
