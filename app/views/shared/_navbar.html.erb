@@ -7,9 +7,12 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ms-auto">
         <% if user_signed_in? %>
+    <%= render 'shared/sidebar' %>
+
           <%= link_to 'My notebooks', notebooks_path, class: 'nav-link' %>
-          <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
-        <% else %>
+          <%= button_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'nav-link btn btn-primary btn-sm'  %>
+
+    <% else %>
           <%= link_to 'Register', new_user_registration_path, class: 'nav-link' %>
           <%= link_to 'Log in', new_user_session_path, class: 'nav-link' %>
         <% end %>

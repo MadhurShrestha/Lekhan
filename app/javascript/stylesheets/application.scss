@@ -1,5 +1,10 @@
-@import "trix/dist/trix";
+@import "bootstrap/scss/bootstrap";
+@import "app/assets/stylesheets/all";
+@import "app/assets/stylesheets/sb-admin-2";
 @import "actiontext";
 
-
+@import "trix/dist/trix";
 @import "notebooks";
+
+
+

@@ -4,6 +4,7 @@ class NotebooksController < ApplicationController
   before_action :set_base_breadcrumbs, only: [:show, :new, :edit]
   # GET /notebooks or /notebooks.json
   def index
+    @notebooks = Notebook.search(params[:query])
     @notebooks = current_user.notebooks
     add_breadcrumb("Notebooks")
   end

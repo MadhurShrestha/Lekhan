@@ -5,6 +5,11 @@
 <%= link_to 'New Notebook', new_notebook_path, class: 'btn btn-primary' %>
 </h4>
 
+  <%= form_with url: notebooks_path, method: :get do |form| %>
+  <%= form.search_field :query %>
+  <%= form.button "Search" %>
+<% end %>
+
 <div class="row">
   <% @notebooks.each do |notebook| %>
     <div class="col-md-4">
