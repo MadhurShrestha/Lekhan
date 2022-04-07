@@ -1,3 +1,4 @@
+<div class="container">
 <h4 class='d-flex justify-content-between  mb-4'>
   <div>
     <%= @page.title %>
@@ -5,14 +6,14 @@
   </div>
 
   <div>
-    <%= form_with(model: [@notebook, @page, @paragraph], html: { class: 'float-start'}) do  |form|%>
-      <%= form.submit "Add paragraph", class: 'btn btn-primary me-1' %>
+    <%= form_with(model: [@notebook, @page, @paragraph], html: { class: 'float-left'}) do  |form|%>
+      <%= form.submit "Add paragraph", class: 'btn btn-primary ml-1' %>
     <% end %>
-    <%= form_with(model: [@notebook, @page, @image_element], html: { class: 'float-start'}) do  |form|%>
-      <%= form.submit "Add Image", class: 'btn btn-primary me-1' %>
+    <%= form_with(model: [@notebook, @page, @image_element], html: { class: 'float-left'}) do  |form|%>
+      <%= form.submit "Add Image", class: 'btn btn-primary ml-1' %>
     <% end %>
-     <%= form_with(model: [@notebook, @page, @checklist], html: { class: 'float-start'}) do  |form|%>
-      <%= form.submit "Add Checklist", class: 'btn btn-primary' %>
+     <%= form_with(model: [@notebook, @page, @checklist], html: { class: 'float-left'}) do  |form|%>
+      <%= form.submit "Add Checklist", class: 'btn btn-primary ml-1' %>
     <% end %>
   </div>
 </h4>
@@ -21,4 +22,5 @@
 <div class="col-lg-10 offset-lg-1">
   <%= render @page.elements %>
 
+</div>
 </div>

@@ -16,6 +16,9 @@
           <div class="buttons mt-3">
             <%= form.submit "Save", class: 'btn btn-primary' %>
             <a href="#" class="cancel btn btn-secondary">Cancel</a>
+                    <%= link_to notebook_page_paragraph_path(notebook,page,paragraph), method: :delete, data: { confirm:"Are you sure?" } do %>
+                    <i class="fas fa-times text-danger"></i>
+                    <% end %>
           </div>
         <% end %>
       </div>
