@@ -1,43 +1,70 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<h4 class="d-flex justify-content-between">
-<span>Notebooks</span>
-<%= link_to 'New Notebook', new_notebook_path, class: 'btn btn-primary' %>
-</h4>
+  <h4 class="d-flex justify-content-between">
+  <span>Notebooks</span>
+  <%= link_to 'New Notebook', new_notebook_path, class: 'btn btn-primary mr-4' %>
+  </h4>
 
-  <%= form_with url: notebooks_path, method: :get do |form| %>
-  <%= form.search_field :query %>
-  <%= form.button "Search" %>
-<% end %>
+    <%= form_with url: notebooks_path, method: :get do |form| %>
+    <%= form.search_field :query %>
 
-<div class="row">
-  <% @notebooks.each do |notebook| %>
-    <div class="col-md-4">
-        <div class="card notebook-card mb-4 ">
-          <div class="card-body">
-            <h4 class='card-title d-flex justify-content-between'>
-              <%= link_to notebook.title,notebook %>
-              <a href="https://www.google.com">
-              </a>
-              <!-- Example split danger button -->
-              <div class="btn-group">
-                <button type="button" class="btn btn-outline-info dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="fas fa-ellipsis-h"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-right">
-                  <td><%= link_to 'Edit', edit_notebook_path(notebook), class: 'dropdown-item'%></td>
-                  <td><%= link_to 'Delete', notebook, method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %></td>
-                </div>
-              </div>
-            </h4>
-            <div class="stats mb-4">
-              <p class="page-count"><%= notebook.pages.count %> pages</p>
-              <p class="started"><%= time_ago_in_words(notebook.created_at) %> ago.</p>
-            </div>
-            <%= link_to 'View', notebook, class: 'btn btn-primary' %>
-          </div>
-        </div>
-    </div>
+    <%= form.button "Search" %>
+
   <% end %>
+
+  <div class="row">
+    <% @notebooks.each do |notebook| %>
+      <div class="col-md-4">
+          <div class="card notebook-card mb-4 ">
+            <div class="card-body">
+              <h4 class='card-title d-flex justify-content-between'>
+                <%= link_to notebook.title,notebook %>
+                <a href="https://www.google.com">
+                </a>
+                <!-- Example split danger button -->
+                <div class="btn-group">
+                  <button type="button" class="btn btn-outline-info dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-ellipsis-h"></i>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <td><%= link_to 'Edit', edit_notebook_path(notebook), class: 'dropdown-item'%></td>
+                    <td><%= link_to 'Delete', notebook, method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %></td>
+                  </div>
+                </div>
+              </h4>
+              <div class="stats mb-4">
+                <p class="page-count"><%= notebook.pages.count %> pages</p>
+                <p class="started"><%= time_ago_in_words(notebook.created_at) %> ago.</p>
+              </div>
+              <%= link_to 'View', notebook, class: 'btn btn-primary' %>
+            </div>
+          </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>
+        <div class="position-relative footer-main body-footer">
+ <div class="d-flex flex-column h-100">
+
+<!-- FOOTER -->
+    <footer class="w-100 py-3 flex-shrink-0">
+        <div class="container py-4">
+            <div class="row gy-4 gx-5">
+        <div class="container copyright text-center my-auto">
+
+<ul class="footer-menu">
+<a class="footer-link" href="https://www.monkkee.com/en/" target="_blank">Homepage</a>&nbsp | &nbsp
+<a class="footer-link" href="https://www.monkkee.com/en/support/" target="_blank">Contact</a>&nbsp | &nbsp
+<a class="footer-link" href="https://www.monkkee.com/en/faq/" target="_blank">FAQ</a>&nbsp | &nbsp
+<a class="footer-link" href="https://www.monkkee.com/en/faq/" target="_blank">Privacy Policy</a>
+
+</ul>
 </div>
 
+            </div>
+        </div>
+    </footer>
+</div>
+</div>

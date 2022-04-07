@@ -20,13 +20,18 @@
         <div class="topbar-divider d-none d-sm-block"></div>
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow ">
-          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%= current_user.email %></span>
-            <%= image_tag("undraw_profile", class: "img-profile rounded-circle",width:"70", height:"70") %>
+
+
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%= current_user.username %></span>
+              <%= image_tag(current_user.avatar_thumbnail) if current_user.avatar.attached? %>
           </a>
+
+
           <!-- Dropdown - User Information -->
           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
             <%= link_to edit_user_registration_path,class: "dropdown-item" do%> <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Edit Your profile
               <%end%>
+
                 <%= link_to destroy_user_session_path,method: :delete,class: 'dropdown-item' do%> <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Log Out
                   <% end %>
           </div>

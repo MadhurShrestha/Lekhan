@@ -1,8 +1,11 @@
-<div class="container">
+<div class="container mt-3">
 <h4 class='d-flex justify-content-between  mb-4'>
   <div>
     <%= @page.title %>
-    <%= link_to 'Edit', edit_notebook_page_path(@notebook,@page),class: 'btn btn-outline-primary' %>
+
+    <%= link_to edit_notebook_page_path(@notebook, @page) ,class: 'btn btn-outline-info ' do%> <i class="fa-solid fa-pen-fancy"></i>
+    <% end %>
+
   </div>
 
   <div>
@@ -24,3 +27,27 @@
 
 </div>
 </div>
+<div class="position-relative footer-main body-footer">
+ <div class="d-flex flex-column h-100">
+
+<!-- FOOTER -->
+    <footer class="w-100 py-3 flex-shrink-0">
+        <div class="container py-4">
+            <div class="row gy-4 gx-5">
+        <div class="container copyright text-center my-auto">
+
+<ul class="footer-menu">
+<a class="footer-link" href="https://www.monkkee.com/en/" target="_blank">Homepage</a>&nbsp | &nbsp
+<a class="footer-link" href="https://www.monkkee.com/en/support/" target="_blank">Contact</a>&nbsp | &nbsp
+<a class="footer-link" href="https://www.monkkee.com/en/faq/" target="_blank">FAQ</a>&nbsp | &nbsp
+<a class="footer-link" href="https://www.monkkee.com/en/faq/" target="_blank">Privacy Policy</a>
+
+</ul>
+</div>
+
+            </div>
+        </div>
+    </footer>
+</div>
+</div>
+

@@ -39,9 +39,14 @@ class ChecklistsController < ApplicationController
   end
 
   # DELETE /checklists/1
+
+
   def destroy
-    @checklist.destroy
-    redirect_to checklists_url, notice: 'Checklist was successfully destroyed.'
+    notebook = current_user.notebooks.find(params[:notebook_id])
+    page = notebook.pages.find(params[:page_id])
+    checklist = page.checklists.find(params[:id])
+    checklist.destroy
+    redirect_to notebook_page_path(notebook,page)
   end
 
   private

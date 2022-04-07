@@ -27,6 +27,9 @@
              <%= form.text_field :title, class: 'form-control' ,placeholder: "Add a new checklist item" %>
             <div class="input-group-append">
               <%= form.submit "Save",class: 'btn btn-dark' %>
+              <%= link_to notebook_page_checklist_path(notebook,page,checklist), method: :delete, class: 'delete-btn btn btn-outline-danger ', data: {confirm: "Are you sure?" } do%>
+        <i class="fas fa-trash"></i>
+      <% end %>
             </div>
           </div>
           <% end %>

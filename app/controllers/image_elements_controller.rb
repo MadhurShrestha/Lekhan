@@ -19,6 +19,13 @@ class ImageElementsController < ApplicationController
     end
   end
 
+   def destroy
+      @notebook = current_user.notebooks.find(params[:notebook_id])
+      @page = @notebook.pages.find(params[:page_id])
+      @image_element = @page.image_elements.find(params[:id])
+      @image_element.destroy
+      redirect_to notebook_page_path(@notebook,@page)
+    end
 
 
   def image_element_params
