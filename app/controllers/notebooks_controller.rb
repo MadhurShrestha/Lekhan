@@ -2,10 +2,10 @@ class NotebooksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_notebook, only: %i[ show edit update destroy ]
   before_action :set_base_breadcrumbs, only: [:show, :new, :edit]
+
   # GET /notebooks or /notebooks.json
   def index
-    @notebooks = Notebook.search(params[:query])
-    @notebooks = current_user.notebooks
+    @notebooks = current_user.notebooks.search(params[:query])
     add_breadcrumb("Notebooks")
   end
 

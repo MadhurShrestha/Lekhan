@@ -22,6 +22,9 @@ header {
 
 }
 
+.breadcrumb{
+  background-color: #dcdcdc !important;
+}
 .vr
 {
   display:inline;
@@ -33,11 +36,20 @@ header {
 
 .footer-main {
     background-image: url(nav-bg.png);
+    margin-bottom: 0px;
 
     padding: 25px 10px 30px;
 }
 
 
+
+.wrapper{
+  flex:1;
+}
+
+footer{
+  padding:15px;
+}
 
 
 
@@ -134,7 +146,10 @@ a:hover, a:focus {
     CUSTOM UTILS CLASSES
   ========================================== */
   body, html {
-    height: 100%;
+    text-align:center;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
   }
 
 .flex-wrapper {

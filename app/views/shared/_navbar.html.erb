@@ -2,7 +2,8 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <% if (user_signed_in?) %>
-        <%= link_to 'My notebooks', notebooks_path, class: 'nav-link' %>
+    <%= render 'shared/breadcrumbs' %>
+
           <% else %>
           <li class="nav-item"> <a class="nav-link" href="#about">About</a> </li>
           <li class="nav-item"> <a class="nav-link" href="#features">Features</a> </li>
