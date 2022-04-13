@@ -43,6 +43,6 @@ class ParagraphsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def paragraph_params
-      params.require(:paragraph).permit(:content)
+      params.require(:paragraph).permit(:title, :content)
     end
 end
