@@ -13,7 +13,5 @@ class Page < ApplicationRecord
  #      end
  #    end
 
-  def elements
-    paragraphs + image_elements + checklists
-  end
+
 end
