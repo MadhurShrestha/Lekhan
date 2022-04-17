@@ -18,6 +18,12 @@
     <%= form.text_field :title, class: 'form-control' %>
   </div>
 
+        <div class="field mb-3">
+            <%= form.label :content %>
+            <%= form.rich_text_area :content , class: 'form-control'%>
+        </div>
+
+
   <div class="actions">
     <%= form.submit class: 'btn btn-primary' %>
     <%= link_to 'Cancel', @notebook, class: 'btn btn-secondary' %>
