@@ -11,6 +11,7 @@ class NotebooksController < ApplicationController
 
   # GET /notebooks/1 or /notebooks/1.json
   def show
+    @notebooks = current_user.notebooks.search(params[:query])
     add_breadcrumb(@notebook.title)
   end
 
