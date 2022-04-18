@@ -3,6 +3,8 @@ class Notebook < ApplicationRecord
   has_many :pages, dependent: :destroy
 
  include MeiliSearch::Rails
+   extend Pagy::Meilisearch
+
 
     meilisearch do
       attribute :title
