@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_breadcrumbs
-
+  include Pagy::Backend
 
   def configure_permitted_parameters
     added_attrs = [:username, :email, :avatar, :password_confimration, :remember_me]
