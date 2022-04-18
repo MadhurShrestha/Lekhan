@@ -33,6 +33,8 @@ gem 'bootstrap_form'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+    gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :development do
@@ -60,4 +62,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "stimulus_reflex", "~> 3.4"
 
 gem "meilisearch-rails", "~> 0.5.1"
+gem 'paper_trail', '~> 12.3'
 
+gem 'pagy', '~> 5.10', '>= 5.10.1'
