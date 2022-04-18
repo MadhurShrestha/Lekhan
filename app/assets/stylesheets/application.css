@@ -34,6 +34,10 @@ header {
   margin:5px;
 }
 
+.pagination{
+  background-color: white;
+}
+
 .footer-main {
     background-image: url(nav-bg.png);
     margin-bottom: 0px;
