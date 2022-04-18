@@ -5,13 +5,15 @@ class NotebooksController < ApplicationController
 
   # GET /notebooks or /notebooks.json
   def index
-    @notebooks = current_user.notebooks.search(params[:query])
+
+    @notebooks = current_user.notebooks.pagy_search(params[:query])
+    @pagy, @notebooks = pagy_meilisearch(@notebooks, items: 15)
     add_breadcrumb("Notebooks")
   end
 
   # GET /notebooks/1 or /notebooks/1.json
   def show
-    @notebooks = current_user.notebooks.search(params[:query])
+    @notebooks = current_user.notebooks.pagy_search(params[:query])
     add_breadcrumb(@notebook.title)
   end
 
