@@ -1,10 +1,18 @@
 class Page < ApplicationRecord
   belongs_to :notebook
-  has_many :paragraphs, dependent: :destroy
+  has_rich_text :content
+
   has_many :image_elements, dependent: :destroy
   has_many :checklists, dependent: :destroy
 
-  def elements
-    paragraphs + image_elements + checklists
-  end
+ # include MeiliSearch::Rails
+
+ #    meilisearch do
+ #      attribute :title
+ #      attribute :content do
+ #        paragraphs.pluck(content)
+ #      end
+ #    end
+
+
 end

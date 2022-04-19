@@ -1,4 +1,309 @@
-<% name = current_user.present? ? current_user.login : 'Visitor to Patrika' %>
 
 
-<h1>Welcome, <%= name %> !!</h1>
+
+<% if user_signed_in? %>
+    <%= auto_session_timeout_js %>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fa-solid fa-pen-fancy"></i>
+                </div>
+                <div class="sidebar-brand-text ml-3">Journal It</div>
+
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+                                <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Interface
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                            <%= link_to 'My notebooks', notebooks_path, class: 'nav-link' %>
+
+                    <span>Notebooks</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="buttons.html">Pages</a>
+                        <a class="collapse-item" href="buttons.html">Checklist</a>
+
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+
+            <!-- Divider -->
+
+            <!-- Heading -->
+
+
+            <!-- Nav Item - Charts -->
+
+
+            <!-- Divider -->
+
+            <!-- Sidebar Toggler (Sidebar) -->
+
+            <!-- Sidebar Message -->
+            <div class="sidebar-card d-none d-lg-flex">
+                <% image_tag "undraw_rocket.svg", class:"sidebar-card-illustration mb-2", alt:"..." %>
+                <p class="text-center mb-2"><strong>Journal It</strong>: Express your thoughts and feelings freely.</p>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+
+<!-- This is a divider block -->
+                        <!-- <div class="topbar-divider d-none d-sm-block"></div> -->
+
+                        <!-- Nav Item - User Information -->
+
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <div class="h3 mb-1 mt-2 text-gray-800">
+                                                <!-- Topbar Search -->
+
+                        </div>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                    </div>
+
+
+                    </div>
+
+                    <!-- Content Row -->
+
+
+                </div>
+                <!-- /.container-fluid -->
+
+
+            </div>
+            <!-- End of Main Content -->
+
+
+        </div>
+
+        <!-- End of Content Wrapper -->
+
+
+
+<% else %>
+    <div class="">
+  <!-- About -->
+  <section class="container p-5 "  >
+  <div class=" mx-auto card-body " style="width: 400px;">
+    <h1 class="cursive">Your thoughts into words<i class="long_title_line"></i></h1>
+  </div>
+
+  <div class="row">
+  <div class="col-sm p-5">
+      <%= image_tag("lurinani.jpg", class:"card-img-top", alt:"")%>
+    <p style="text-align: left;">
+
+
+           <h5 class="card-title monospace">Accessable via internet</h5>
+          <p class="card-text typogphy">To write your thoughts into words, all you need is an internet access and a computer. Whether you are at home or moving consistently.</p></div>
+
+<style type="text/css">
+
+</style>
+
+<div style="font-size:330px"> <div class="vr"></div></div>
+
+  <div class="col-sm p-5">
+      <%= image_tag("lurinani1.jpg", class:"card-img-top", alt:"")%>
+    <p style="text-align: left;">
+
+          <h5 class="card-title monospace">Secure and Encrypted</h5>
+          <p class="card-text typogphy">The journal is completely secure.</p></div>
+<style type="text/css">
+
+</style>
+
+<div style="font-size:330px"> <div class="vr"></div></div>
+  <div class="col-sm p-5">
+      <%= image_tag("lurinani1.jpg", class:"card-img-top", alt:"")%>
+
+    <p style="text-align: left;">
+      <h5 class="card-title monospace">Secret and Private</h5>
+          <p class="card-text typogphy">The use of Journal It is private. So you can express yourself completely without worrying if someone will peek in it.</p></div>
+
+
+
+
+
+
+
+  <h5 class="cursive">Keep a private journal securely on the Internet – to provide a convenient user experience your personal online diary <b>Journal It</b> offers you a variety of features.</h5>
+  </section>
+
+  <!-- Features -->
+  <section class="container p-5 odd" >
+
+  <div class="container mb-3 mx-auto" style="max-width: 540px;">
+    <h1 id="features">Features<i class="title_line"></i></h1>
+    <div class="row no-gutters">
+      <div class="col-md-8">
+        <%= image_tag("pocket_knife.png", class:"card-img",  alt:"")%>
+      </div>
+      <div class="col-md-4">
+        <div class="card-title"></div>
+        <div class="card-body">
+          <h5 class="card-title typography"></h5>
+          <p class="card-text">
+            <div class=" mx-auto card-body typogaphy" style="width: 400px;">
+              <ul>
+                <li>Free use</li>
+                <li>Convenient editor</li>
+                <li>Insert images</li>
+                <li>Automatic saving</li>
+                <li>Create your own categories using tags</li>
+                <li>Search within entries</li>
+                <li>Print view</li>
+                <li>Export feature</li>
+                <li>Automatic logout in case of inactivity</li>
+              </ul>
+            </div>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <!-- Security -->
+  <div class="container">
+    <h1>Security
+          <i class="title_line"></i>
+        </h1>
+    <p>The free online diary Journal It offers you the safest place for your thoughts. A comprehensive security concept protects your content against unauthorized access. And this is how it works:</p>
+    <p>As soon as content created by you is saved, it is directly encrypted on your computer, i.e. even before its leaves your device and is transferred to the server via the Internet. With this end-to-end encryption approach Journal It set themselves apart from other competitors who do not encrypt user data at all or only provide server-side encryption.</p>
+    <p style="text-align: center"><img class="size-full wp-image-107 aligncenter" style="height: auto" src="https://www.monkkee.com/en/wp-content/uploads/sites/3/encryption_process.png" alt="encryption_process" width="900" height="252"></p>
+    <p>The decryption key for Journal It is your password, which you must enter each time you log on. The encryption method used is AES-256. Initially developed for military purposes, this highly secure encoding technology is nowadays used by governments, institutions and banks to encrypt top-secret information.</p>
+    <p>The encrypted data is transferred&nbsp;directly between your device and the server. For this purpose, Journal It uses an additional SSL-based encryption technology. That way, no one can eavesdrop on the transfer.</p>
+    <p>Only you can decrypt your entries now, since you are the only one to know the password. This means that even the system administrators of Journal It cannot read your data. It also means that it is not possible to hand data over to government authorities, as is currently being discussed in the media. As a side effect, it is not possible to restore your password in case you forget it. So always remember your password – there is no spare key!</p>
+    <p>If you have any further questions regarding security, check out our <a title="FAQ" href="https://www.Journalit.com/en/faq/">FAQs</a> or send a message to Journal It using the <a title="contact form" href="https://www.JournalIt.com/en/contact/">contact form</a>.</p>
+  </div>
+  <!-- Testimonials -->
+  <section class="container p-5 odd" >
+
+  <div class="container_testimonials">
+    <h1>Testimonials
+          <i class="title_line"></i>
+        </h1>
+    <div id="carouselContent" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active text-center p-4">
+          <p>Secure, simple, accessible, functional – Journal It is precisely what I have been looking for. A big THANK YOU to the Journal It team!</p>
+        </div>
+        <div class="carousel-item text-center p-4">
+          <p>I had my online journal on WordPress for 4 years. When I heard of Journal It, I started moving all my articles here immediately. I love it.</p>
+        </div>
+        <div class="carousel-item text-center p-4">
+          <p>I’m dearly loving your application. I set a resolution to write a new journal entry every day and so far I’m happy to say I’ve been keeping up. I love the simplicity of your site, and the good looking design. It gives me a very easy way to browse through my entries, and a nice tagging system.</p>
+        </div>
+        <div class="carousel-item text-center p-4">
+          <p>Journal It’s clean design and user-friendly features are just right for me. Thanks 🙂</p>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselContent" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
+      <a class="carousel-control-next" href="#carouselContent" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+    </div>
+  </div>
+</section>
+
+
+</div>
+    </div>
+
+<% end %>

@@ -7,8 +7,8 @@ class PagesController < ApplicationController
 
   # GET /pages/1 or /pages/1.json
   def show
+    @notebooks = current_user.notebooks.search(params[:query])
     add_breadcrumb(@page.title)
-    @paragraph = @page.paragraphs.build
     @image_element = @page.image_elements.build
     @checklist = @page.checklists.build
   end
@@ -65,7 +65,7 @@ class PagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def page_params
-      params.require(:page).permit(:title)
+      params.require(:page).permit(:title, :content)
     end
 
     def set_base_breadcrumbs

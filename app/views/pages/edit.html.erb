@@ -1,8 +1,25 @@
+<div class="container mt-3 ">
 <h4>
   Editing Page
-  <%= link_to 'View', notebook_page_path(@notebook,@page), class: 'btn btn-outline-primary' %>
+
+  <%= link_to notebook_page_path(@notebook,@page),class: 'btn btn-outline-info' do %>
+  <i class="fa-solid fa-eye"></i>
+  <% end %>
+
 
 </h4>
 
 <%= render 'form', notebook: @notebook,page: @page %>
 
+</div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>

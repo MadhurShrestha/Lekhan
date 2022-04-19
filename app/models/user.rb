@@ -4,9 +4,20 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :notebooks
+  has_one_attached :avatar
+  after_commit :add_default_avatar, on: %i[create update]
 
   attr_writer :login
   validate :validate_username
+
+  def avatar_thumbnail
+    if avatar.attached?
+      avatar.variant(resize_to_limit: [95,95]).processed
+    else
+      "namaskar.jpg"
+    end
+
+  end
 
   def login
     @login || self.username || self .email
@@ -26,4 +37,19 @@ class User < ApplicationRecord
       errors.add(:username, :invalid)
     end
   end
+
+  private
+    def add_default_avatar
+      unless avatar.attached?
+        avatar.attach(
+          io: File.open(
+            Rails.root.join(
+              'app','assets','images','namaskar.jpg'
+              ),
+            ),
+          filename: 'namaskar.jpg',
+          content_type: 'image/jpg'
+          )
+      end
+    end
 end

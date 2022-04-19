@@ -26,12 +26,14 @@ class ParagraphsController < ApplicationController
 
   # DELETE /paragraphs/1 or /paragraphs/1.json
   def destroy
+    @notebook = current_user.notebooks.find(params[:notebook_id])
+    @page = @notebook.pages.find(params[:page_id])
+    @paragraph = @page.paragraphs.find(params[:id])
     @paragraph.destroy
-    respond_to do |format|
-      format.html { redirect_to paragraphs_url, notice: "Paragraph was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to notebook_page_path(@notebook,@page)
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -41,6 +43,6 @@ class ParagraphsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def paragraph_params
-      params.require(:paragraph).permit(:content)
+      params.require(:paragraph).permit(:title, :content)
     end
 end

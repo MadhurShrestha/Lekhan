@@ -1,21 +1,58 @@
 <% page = paragraph.page %>
 <% notebook =  page.notebook %>
 
-<% if paragraph.persisted? %>
-      <div class="text-content p-4 mb-2">
-        <% if paragraph.content.present? %>
-          <%= paragraph.content %>
-        <% else %>
-          <i>Click here to add text </i>
-        <% end %>
+    <% if paragraph.persisted? %>
+      <div class="p-4" >
+      <div class="text-content p-2 mb-2">
+        <% if paragraph.title.present? %>
+          <h4 class="m-0"><%= paragraph.title %></h4>
+            <% else %> TITLE....
+              <% end %>
       </div>
-      <div class="form-content d-none p-4 mb-2">
+
+      <div class="form-content d-none mb-2">
         <%= form_with(model: [notebook, page, paragraph]) do  |form|%>
-          <%= form.rich_text_area :content %>
+        <label>Title</label>
+          <%= form.text_field :title, class: 'form-control' %>
           <div class="buttons mt-3">
             <%= form.submit "Save", class: 'btn btn-primary' %>
             <a href="#" class="cancel btn btn-secondary">Cancel</a>
           </div>
         <% end %>
       </div>
-    <% end %>
+
+            <div class="text-content p-2 mb-2">
+        <% if paragraph.content.present? %>
+          <%= paragraph.content %>
+        <% else %> <i>Click here to add paragraph</i>
+        <% end %>
+      </div>
+            <div class="form-content d-none p-4 mb-2">
+        <%= form_with(model: [notebook, page, paragraph]) do  |form|%>
+          <%= form.rich_text_area :content %>
+            <div class="buttons mt-3">
+              <%= form.submit "Save", class: 'btn btn-info' %> <a href="#" class="cancel btn btn-secondary">Cancel</a>
+              <div class="float-right">
+                <%= link_to notebook_page_paragraph_path(notebook,page,paragraph), method: :delete, data: { confirm:"Are you sure?" },class: 'btn btn-outline-danger ' do %> <i class="fas fa-trash "></i>
+                  <% end %>
+              </div>
+            </div>
+            <% end %>
+      </div>
+
+
+
+      <div class="form-content d-none p-4 mb-2">
+        <%= form_with(model: [notebook, page, paragraph]) do  |form|%>
+          <%= form.rich_text_area :content %>
+            <div class="buttons mt-3">
+              <%= form.submit "Save", class: 'btn btn-info' %> <a href="#" class="cancel btn btn-secondary">Cancel</a>
+              <div class="float-right">
+                <%= link_to notebook_page_paragraph_path(notebook,page,paragraph), method: :delete, data: { confirm:"Are you sure?" },class: 'btn btn-outline-danger ' do %> <i class="fas fa-trash "></i>
+                  <% end %>
+              </div>
+            </div>
+            <% end %>
+      </div>
+      <% end %>
+</div>

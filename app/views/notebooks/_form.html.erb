@@ -1,3 +1,4 @@
+<div class="container">
 <%= form_with(model: notebook) do |form| %>
   <% if notebook.errors.any? %>
     <div id="error_explanation">
@@ -18,6 +19,10 @@
 
   <div class="actions">
     <%= form.submit class: 'btn btn-primary'%>
-    <%= link_to 'Cancel', notebooks_path, class: 'btn btn-secondary ms-1' %>
+      <%= link_to notebooks_path,class: 'btn btn-outline-secondary' do %>
+  <i class="fa-solid fa-arrow-left-long"></i>
+  <% end %>
+
   </div>
 <% end %>
+  </div>

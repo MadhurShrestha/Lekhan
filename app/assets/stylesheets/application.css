@@ -10,10 +10,156 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require bootstrap
  *= require_tree .
  *= require_self
  */
 
 require rails_bootstrap_forms
 
+
+header {
+
+}
+
+.breadcrumb{
+  background-color: #dcdcdc !important;
+}
+.vr
+{
+  display:inline;
+  height:100%;
+  width:1px;
+  border:1px inset;
+  margin:5px;
+}
+
+.pagination{
+  background-color: white;
+}
+
+.footer-main {
+    background-image: url(nav-bg.png);
+    margin-bottom: 0px;
+
+    padding: 25px 10px 30px;
+}
+
+
+
+.wrapper{
+  flex:1;
+}
+
+footer{
+  padding:15px;
+}
+
+
+
+nav {
+    width: 100%;
+    height: 60px;
+    background-color: #dcdcdc;
+    margin: 0;
+    z-index: 101;
+}
+
+section.odd {
+  background-color: #dcdcdc;
+}
+.profile-round{
+  border-radius: 50%;
+  width: 200px;
+}
+
+.typography{
+  font-family: "Lucida sans-serif;"
+}
+
+.typogaphy{
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.typogphy{
+    font-family: "Times New Roman", Times, serif;
+}
+
+.monospace {
+  font-family: "Lucida Console", Courier, monospace;
+}
+.cursive {
+  font-family: cursive;
+}
+.title_line {
+    border-bottom: 4px solid #D5D5D5;
+    display: block;
+    height: 1px;
+    margin: 5px auto 0;
+    width: 150px;
+}
+
+.long_title_line {
+    border-bottom: 4px solid #D5D5D5;
+    display: block;
+    height: 1px;
+    margin: 5px auto 0;
+    width: 250px;
+}
+
+h1 {
+    color: #555;
+    font-size: 1.8em;
+    font-weight: 700;
+    line-height: 1.3em;
+    text-align: center;
+    margin: 30px 0 45px;
+}
+
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev{
+    display:block;
+}
+
+
+/* ==========================================
+    FOR DEMO PURPOSE
+  ========================================== */
+
+
+.text-small {
+  font-size: 0.9rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+a:hover, a:focus {
+  text-decoration: none;
+}
+
+
+
+
+
+/* ==========================================
+    CUSTOM UTILS CLASSES
+  ========================================== */
+  body, html {
+    text-align:center;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+  }
+
+.flex-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
 

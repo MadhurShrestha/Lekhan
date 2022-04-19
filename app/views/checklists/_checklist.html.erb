@@ -1,3 +1,5 @@
+
+<div class="container">
 <% page = checklist.page %>
 <% notebook =  page.notebook %>
 
@@ -27,6 +29,9 @@
              <%= form.text_field :title, class: 'form-control' ,placeholder: "Add a new checklist item" %>
             <div class="input-group-append">
               <%= form.submit "Save",class: 'btn btn-dark' %>
+              <%= link_to notebook_page_checklist_path(notebook,page,checklist), method: :delete, class: 'delete-btn btn btn-outline-danger ', data: {confirm: "Are you sure?" } do%>
+        <i class="fas fa-trash"></i>
+      <% end %>
             </div>
           </div>
           <% end %>
@@ -45,8 +50,8 @@
                 <li class="list-group-item d-flex justify-content-between">
                   <span><%= checklist_item.title %> </span>
                   <div>
-                    <div class="dropdown float-start">
-                        <button class="btn btn-sm me-3 btn-outline<%= checklist_item.color_class %> dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="dropdown float-left">
+                        <button class="btn btn-sm mr-3 btn-outline<%= checklist_item.color_class %> dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <%= checklist_item.readable_status %>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -71,3 +76,4 @@
         </div>
       </div>
     <% end %>
+</div>
