@@ -33,8 +33,7 @@ gem 'bootstrap_form'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-    gem "better_errors"
-  gem "binding_of_caller"
+
 end
 
 group :development do
@@ -46,6 +45,9 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'pry-rails', :group => :development
+
+
 end
 
 group :test do
@@ -62,6 +64,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "stimulus_reflex", "~> 3.4"
 
 gem "meilisearch-rails", "~> 0.5.1"
-gem 'paper_trail', '~> 12.3'
 
 gem 'pagy', '~> 5.10', '>= 5.10.1'
