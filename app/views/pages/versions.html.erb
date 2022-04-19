@@ -1,0 +1,64 @@
+<div id="wrapper">
+    <%= render "shared/sidebar" %>
+
+      <div class="sidebar-card d-none d-lg-flex">
+          <p class="text-center mb-2"><strong>Journal It</strong>: Express your thoughts and feelings freely.</p>
+      </div>
+    </ul>
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+            <div class="container">
+                <h3 class="d-flex ">
+  <div class="mr-3">
+  <%= @notebook.title %>
+<h1>Previous Versions</h1>
+  <%= link_to edit_notebook_path(@notebook) ,class: 'btn btn-outline-info ' do%> <i class="fa-solid fa-pen-fancy"></i>
+  <% end %>
+</div>
+</h3>
+                <h4 class="d-flex justify-content-between">
+<span>
+<%= link_to 'New Page', new_notebook_page_path(@notebook), class: 'btn btn-primary' %>
+
+</span>
+</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Title</th>
+                <th colspan="2"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @notebook.pages.each do |page| %>
+                <tr>
+                    <td>
+                        <%= page.position %>
+                    </td>
+                    <td>
+                        <%= link_to page.title, notebook_page_path(@notebook, page) %>
+                    </td>
+                    <td>
+                        <%= link_to edit_notebook_page_path(@notebook, page) ,class: 'btn btn-outline-info ' do%> <i class="fa-solid fa-pen-fancy"></i>
+                            <% end %>
+                    </td>
+                    <td>
+                        <%= link_to notebook_page_path(@notebook,page), method: :delete, data: { confirm:"Are you sure?" },class: 'btn btn-outline-danger ' do %> <i class="fas fa-trash "></i>
+                            <% end %>
+                    </td>
+                </tr>
+                <% end %>
+            <%= render "notebook", collection: @notebooks %>
+        </tbody>
+    </table>
+                <br>
+                <%= link_to 'New Notebook', new_notebook_path, class:'btn btn-secondary' %>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- End of Main Content -->
+    <!-- End of Content Wrapper -->
