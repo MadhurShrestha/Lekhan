@@ -5,7 +5,7 @@ class NotebooksController < ApplicationController
 
   # GET /notebooks or /notebooks.json
   def index
-    @notebooks = current_user.notebooks.search(params[:query])
+    @notebooks = current_user.notebooks.all
     add_breadcrumb("Notebooks")
   end
 
