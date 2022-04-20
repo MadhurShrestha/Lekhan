@@ -1,2 +1,1 @@
-import 'app/javascript/packs/vendor/jquery-easing/jquery.easing.min'
-
+import './vendor/jquery-easing/jquery.easing.min.js'
