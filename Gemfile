@@ -72,3 +72,6 @@ gem "meilisearch-rails", "~> 0.5.1"
 
 gem 'pagy', '~> 5.10', '>= 5.10.1'
 gem 'redis-session-store'
+
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
