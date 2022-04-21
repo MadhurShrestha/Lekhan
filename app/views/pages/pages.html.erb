@@ -1,0 +1,18 @@
+
+  <div class="page-break">
+
+<div class="wrapper">
+   <b>PDF Created At: <%= DateTime.now %></b>
+  <p>
+    <strong>POST ID: <%= @page.id%> </strong>
+
+
+  </p>
+<td class="title">
+                    <%= image_tag wicked_pdf_asset_base64('JournalIt.png') %>
+                  </td>
+</div>
+  <h2> <%= @page.title %></h2>
+  <p><%= @page.content %></p>
+
+  </div>
