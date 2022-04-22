@@ -1,59 +1,48 @@
 <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15"> <i class="fa-solid fa-pen-fancy"></i> </div>
-        <div class="sidebar-brand-text ml-3">Journal It</div>
-      </a>
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="/"> <i class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span></a>
-      </li>
-      <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-        <div class="input-group ">
-          <%= form_with url: notebooks_path, method: :get do |form| %>
-            <%= form.search_field :query %>
-              <div class="buttons ">
-                <%= form.button "Search", class: 'btn btn-secondary',placeholder: "Search for ...." do %> <i class="fa-solid fa-magnifying-glass"></i>
-                  <% end %>
-                    <% end %>
-              </div>
-        </div>
-      </form>
-      <br>
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-      <!-- Heading -->
-      <div class="sidebar-heading"> Interface
-        <div class="buttons ">
-          <%= link_to new_notebook_path, class: 'btn btn-outline-info' do %> <i class="fa-solid fa-circle-plus "></i>
-            <% end %>
-        </div>
-      </div>
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"> <i class="fa-solid fa-book-journal-whills"></i>Notebooks </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <% @notebooks.each do |notebook| %>
-              <br> <i class="fa-solid fa-book">
-                  <%= link_to notebook  do%>&nbsp;
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+  <!-- Sidebar - Brand -->
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <div class="sidebar-brand-icon rotate-n-15"> <i class="fa-solid fa-pen-fancy"></i> </div>
+    <div class="sidebar-brand-text ml-3">Journal It</div>
+  </a>
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0">
+  <!-- Nav Item - Dashboard -->
+  <li class="nav-item active">
+    <a class="nav-link" href="/"> <i class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span></a>
+  </li>
+  <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+    <div class="input-group ">
+      <%= form_with url: notebooks_path, method: :get do |form| %>
+        <%= form.search_field :query %>
+          <div class="buttons ">
+            <%= form.button "Search", class: 'btn btn-secondary',placeholder: "Search for ...." do %> <i class="fa-solid fa-magnifying-glass"></i>
+              <% end %>
+                <% end %>
+          </div>
+    </div>
+  </form>
+  <br>
+  <!-- Divider -->
+  <hr class="sidebar-divider">
+  <!-- Heading -->
+  <div class="sidebar-heading"> Interface
+    <div class="buttons ">
+      <%= link_to new_notebook_path, class: 'btn btn-outline-info' do %> <i class="fa-solid fa-circle-plus "></i>
+        <% end %>
+    </div>
+  </div>
+  <!-- Nav Item - Pages Collapse Menu -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"> <i class="fa-solid fa-book-journal-whills"></i>Notebooks </a>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <% @notebooks.each do |notebook| %>
+          <div class="btn-group"> <i class="fa-solid fa-book"></i>
+            <%= link_to notebook.title,notebook,class: "dropdown-item "%>
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div>
+          <!-- Example split danger button -->
 
-                  <%= link_to notebook.title,notebook%><br></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                    <!-- Example split danger button -->
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-outline-info dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-h"></i>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <td><%= link_to 'Edit', edit_notebook_path(notebook), class: 'dropdown-item'%></td>
-                        <td><%= link_to 'Delete', notebook, method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %></td>
-                      </div>
-                    </div>
-              <%end%>
-                <% end %> <a class="collapse-item" href="/notebooks/:id">List</a> </div>
-        </div>
-      </li>
+          <% end %> <a class="collapse-item" href="/notebooks/">List</a> </div>
+    </div>
+  </li>
