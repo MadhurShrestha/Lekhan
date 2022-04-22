@@ -40,6 +40,10 @@
                         Last updated at <%= notebook.updated_at.strftime("%A, %B, %e, %Y") %></p>
                     </div>
                     <%= link_to 'View', notebook, class: 'btn btn-primary' %>
+                                      <td>
+                        <%= link_to notebook_path(notebook, format: :pdf),class: 'btn btn-outline-secondary ' do %> <i class="fa-solid fa-file-pdf"></i>
+                        <% end %>
+                    </td>
                   </div>
                 </div>
               </div>
