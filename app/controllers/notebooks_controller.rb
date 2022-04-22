@@ -13,6 +13,19 @@ class NotebooksController < ApplicationController
   def show
     @notebooks = Notebook.all
     add_breadcrumb(@notebook.title)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "#{@notebooks}", template: 'notebooks/notebooks.html.erb',
+        page_size: 'A4',
+        orientation: "Landscape",
+        lowquality: true,
+        zoom: 1,
+        dpi: 300,
+        margin: { :top => 0, :bottom => 0, :left => 0 , :right => 0}
+        # disposition: 'attachment'
+      end
+    end
   end
 
   # GET /notebooks/new
