@@ -9,9 +9,7 @@ class Page < ApplicationRecord
 
  #    meilisearch do
  #      attribute :title
- #      attribute :content do
- #        paragraphs.pluck(content)
- #      end
+ #      attribute :content
  #    end
 
 

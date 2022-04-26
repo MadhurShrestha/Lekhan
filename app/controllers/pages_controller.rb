@@ -7,6 +7,7 @@ class PagesController < ApplicationController
 
   # GET /pages/1 or /pages/1.json
   def show
+    # @notebooks = current_user.notebooks.all.pagy_search(params[:query])
     @notebooks = current_user.notebooks.all
     add_breadcrumb(@page.title)
     @image_element = @page.image_elements.build

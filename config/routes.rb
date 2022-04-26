@@ -3,11 +3,14 @@ Rails.application.routes.draw do
     resources :pages do
       resources :checklists do
         resources :checklist_items
-      end
+    end
     end
   end
-  devise_for :users
-  get 'home', to: 'home#index'
+  devise_for :users  # get 'home', to: 'home#index'
+  get 'home', to: 'faq#home'
+  get 'index', to: 'tos#index'
+  resources :contacts, only: [:new, :create]
+
   root to: "notebooks#index"
 
 devise_scope :user do

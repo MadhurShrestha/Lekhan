@@ -19,7 +19,7 @@ gem 'turbolinks', '~> 5'
 # Use Redis adapter to run Action Cable in production
 gem "redis", ">= 4.0", :require => ["redis", "redis/connection/hiredis"]
 gem "hiredis"
-  gem 'pg', '~> 1.3', '>= 1.3.5'
+gem 'pg', '~> 1.3', '>= 1.3.5'
 
 
 # Use Active Model has_secure_password
@@ -34,9 +34,7 @@ gem 'devise'
 gem 'bootstrap_form'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-
+  gem 'pry-rails'
 end
 
 group :development do
@@ -48,8 +46,6 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'pry-rails', :group => :development
-
 end
 
 group :test do
@@ -67,11 +63,12 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "stimulus_reflex", "~> 3.4"
+gem 'meilisearch-rails'
 
-gem "meilisearch-rails", "~> 0.5.1"
 
 gem 'pagy', '~> 5.10', '>= 5.10.1'
 gem 'redis-session-store'
 
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'mail_form'
