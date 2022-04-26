@@ -2,13 +2,12 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :confirmable
   has_many :notebooks, dependent: :destroy
   has_one_attached :avatar
   after_commit :add_default_avatar, on: %i[create update]
 
   attr_writer :login
-  validate :validate_username
 
   def avatar_thumbnail
     if avatar.attached?
@@ -32,11 +31,11 @@ class User < ApplicationRecord
     end
   end
 
-  def validate_username
-    if User.where(email: username).exists?
-      errors.add(:username, :invalid)
-    end
-  end
+  # def validate_username
+  #   if User.where(email: username).exists?
+  #     errors.add(:username, :invalid)
+  #   end
+  # end
 
   private
     def add_default_avatar
