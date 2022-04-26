@@ -7,10 +7,24 @@ class PagesController < ApplicationController
 
   # GET /pages/1 or /pages/1.json
   def show
+    # @notebooks = current_user.notebooks.all.pagy_search(params[:query])
     @notebooks = current_user.notebooks.all
     add_breadcrumb(@page.title)
     @image_element = @page.image_elements.build
     @checklist = @page.checklists.build
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "#{@page.title}", template: 'pages/pages.html.erb',
+        page_size: 'A4',
+        orientation: "Landscape",
+        lowquality: true,
+        zoom: 1,
+        dpi: 300,
+        margin: { :top => 0, :bottom => 0, :left => 0 , :right => 0}
+        # disposition: 'attachment'
+      end
+    end
   end
 
   # GET /pages/new

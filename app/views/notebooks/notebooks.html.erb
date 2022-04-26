@@ -1,0 +1,30 @@
+
+  <div class="page-break">
+
+<div class="wrapper">
+   <b>PDF Created At: <%= DateTime.now %></b>
+  <p>
+    <strong>Notebook ID: <%= @notebook.id%> </strong>
+
+
+  </p>
+
+</div>
+  <h2> <%= @notebook.title %></h2>
+
+<% @notebook.pages.each do |page| %>
+                    <td>
+                    <td>
+                        <h2><%= page.title %></h2>
+                        <b><p><%= page.content %></p> </b>
+                        <hr>
+                    </td>
+
+                    <td>
+                        <%= link_to notebook_page_path(@notebook, page, format: :pdf),class: 'btn btn-outline-secondary ' do %> <i class="fa-solid fa-file-pdf"></i>
+                        <% end %>
+                    </td>
+
+                </tr>
+                <% end %>
+  </div>
