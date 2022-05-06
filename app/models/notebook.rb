@@ -1,5 +1,8 @@
 class Notebook < ApplicationRecord
   belongs_to :user
+
+  has_paper_trail
+
   has_many :pages, dependent: :destroy
 
  include MeiliSearch::Rails

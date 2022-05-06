@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   before_action :set_notebook
   before_action :set_page, only: %i[ show edit update destroy ]
   before_action :set_base_breadcrumbs, only: [:show, :new, :edit]
-
+  skip_before_action :verify_authenticity_token, only: [:update]
 
   # GET /pages/1 or /pages/1.json
   def show
@@ -42,36 +42,39 @@ class PagesController < ApplicationController
   # POST /pages or /pages.json
   def create
     @page = @notebook.pages.build(page_params)
-
     @page.position = @notebook.get_next_page_position
-      if @page.save
-        redirect_to notebook_page_path(@notebook,@page), notice: "Page was successfully created."
-      else
-        render :new
-      end
+    if @page.save
+      redirect_to notebook_page_path(@notebook,@page), notice: "Page was successfully created."
+    else
+      render :new
+    end
   end
 
-  # PATCH/PUT /pages/1 or /pages/1.json
+
+
   def update
+    respond_to do |format|
       if @page.update(page_params)
-        redirect_to notebook_page_path(@notebook,@page), notice: "Page was successfully updated."
+        format.html { redirect_to notebook_page_path(@notebook,@page) }
+        format.json { render json: @page}
       else
-        render :edit
+        format.html { render :edit}
+        format.json { render json: @page.errors, status: :unprocessable_entity }
       end
   end
-
+end
   # DELETE /pages/1 or /pages/1.json
   def destroy
     @page.destroy
-      redirect_to @notebook, notice: "Page was successfully destroyed."
+    redirect_to @notebook, notice: "Page was successfully destroyed."
   end
 
   private
 
-    def set_notebook
-      @notebook = current_user.notebooks.find(params[:notebook_id])
+  def set_notebook
+    @notebook = current_user.notebooks.find(params[:notebook_id])
 
-    end
+  end
     # Use callbacks to share common setup or constraints between actions.
     def set_page
       @page = @notebook.pages.find(params[:id])
