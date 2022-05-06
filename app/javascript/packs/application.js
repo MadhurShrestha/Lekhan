@@ -8,6 +8,8 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import $ from 'jquery';
+global.$ = jQuery;
 
 import "../stylesheets/application"
 
@@ -20,6 +22,7 @@ ActiveStorage.start()
 
 require("trix")
 require("@rails/actiontext")
+require("jquery")
 
 document.addEventListener('turbolinks:load', () => {
   document.addEventListener('click', () => {
@@ -67,7 +70,7 @@ class HeartBeat {
 
 window.heartBeat = new HeartBeat();
 
-const sessionTimeoutPollFrequency = 300;
+const sessionTimeoutPollFrequency = 600;
 function pollForSessionTimeout() {
   if ((Date.now() - window.heartBeat.lastActive) < (sessionTimeoutPollFrequency * 1000)) {
     // HERE
