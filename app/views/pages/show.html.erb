@@ -1,18 +1,17 @@
 <div id="wrapper">
     <!-- Sidebar -->
     <%= render "shared/sidebar" %>
-
         <div class="sidebar-card d-none d-lg-flex">
-                <p class="text-center mb-2"><strong>Journal It</strong>: Express your thoughts and feelings freely.</p>
+            <p class="text-center mb-2"><strong>Journal It</strong>: Express your thoughts and feelings freely.</p>
         </div>
-    </ul>
-    <!-- End of Sidebar -->
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
-        <!-- Main Content -->
-        <div id="content">
-            <div class="container mt-3">
-                <h4 class='d-flex justify-content-between  mb-4'>
+        </ul>
+        <!-- End of Sidebar -->
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+                <div class="container mt-3">
+                    <h4 class='d-flex justify-content-between  mb-4'>
                   <div >
                     <b><h2 class="cursive m-0"><%= @notebook.created_at.strftime("%A, %e %B ")%></h2></b>
 
@@ -24,56 +23,31 @@
     <% end %>
       </div>
                 </h4>
-    <% if @page.content.persisted? %>
-            <div class="text-content  mt-5">
-                <% if @page.title.present? %>
-                    <h2 class="cursive m-0"><%= @page.title %></h2>
-                    <% else %> <h2 class="cursive">TITLE.... </h2>
-                        <% end %>
-            </div>
-
-            <div class="form-content d-none mb-2">
-                <%= form_with(model: [@notebook, @page], local: false) do  |form|%>
-                    <label>Title</label>
-                    <%= form.text_field :title, class: 'form-control' %>
-                        <div class="buttons mt-3">
-                            <%= form.submit "Save", class: 'btn btn-primary' %> <a href="#" class="cancel btn btn-secondary">Cancel</a> </div>
-                        <% end %>
-            </div>
-            <div class="text-content p-2 mt-3">
-                <% if @page.content.present? %>
-                    <%= @page.content %>
-                <% else %>
-                    <h2 class="cursive">This page is so empty .... 🤷🏼‍♂️</h2>
-                <% end %>
-            </div>
-
-            <div class="form-content d-none  mt-2">
-                <%= form_with(model: [@notebook, @page], class: "content-form", local: true) do  |form|%>
-                    <%= form.rich_text_area :content %>
-                        <div class="buttons mt-3">
-                            <%= form.submit "Save", class: 'btn btn-info' %>
-                            <a href="#" class="cancel btn btn-secondary">Cancel</a>
-                                <div class="float-right">
-                                    <span id='auto-save-status' class='p-1'></span>
-                                    <%= link_to notebook_page_path(@notebook,@page), method: :delete, data: { confirm:"Are you sure?" },class: 'btn btn-outline-danger ' do %> <i class="fas fa-trash "></i>
-                                        <% end %>
-                                </div>
+                    <% if @page.content.persisted? %>
+                        <div class="text-content  mt-5">
+                            <% if @page.title.present? %>
+                                <h2 class="cursive m-0"><%= @page.title %></h2>
+                                <% else %>
+                                    <h2 class="cursive">TITLE.... </h2>
+                                    <% end %>
                         </div>
-                        <% end %>
+                        <%= render 'title_form' %>
+                            <div class="text-content p-2 mt-3">
+                                <% if @page.content.present? %>
+                                    <%= @page.content %>
+                                        <% else %>
+                                            <h2 class="cursive">This page is so empty .... 🤷🏼‍♂️</h2>
+                                            <% end %>
+                            </div>
+                            <%= render 'page_form' %>
+                                <% end %>
+                </div>
             </div>
-            <% end %>
-
-            </div>
-
+            <%= render @page.checklists %>
         </div>
-        <%= render @page.checklists %>
-    </div>
-
-  </div>
-
+</div>
 <script type="text/javascript">
-  function savePage() {
+function savePage() {
     $('#auto-save-status').html('Saving...').removeClass('text-danger').removeClass('text-success');
     var form = $('form.content-form').serialize();
     $.ajax({
@@ -81,21 +55,15 @@
         url: '/notebooks/<%= @notebook.id %>/pages/<%= @page.id %>.json',
         data: form,
         dataType: 'JSON',
-        success: function(){
+        success: function() {
             $('#auto-save-status').html('Saved.').removeClass('text-danger').addClass('text-success')
         },
-        error: function(){
+        error: function() {
             $('#auto-save-status').html('Autosave Failed. Please try saving.').removeClass('text-success').addClass('text-danger');
         }
     });
-  }
-
-  document.addEventListener('turbolinks:load', () => {
+}
+document.addEventListener('turbolinks:load', () => {
     setInterval(savePage, 10000);
-  });
+});
 </script>
-
-
-
-
-</div>
