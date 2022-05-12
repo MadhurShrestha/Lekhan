@@ -14,12 +14,8 @@
   <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
     <div class="input-group ">
       <%= form_with url: notebooks_path, method: :get do |form| %>
-        <%= form.search_field :query %>
-          <div class="buttons ">
-            <%= form.button "Search", class: 'btn btn-secondary',placeholder: "Search for ...." do %> <i class="fa-solid fa-magnifying-glass"></i>
-              <% end %>
-                <% end %>
-          </div>
+        <%= form.search_field :query, placeholder: 'Search...', class: 'form-control' %>
+      <% end %>
     </div>
   </form>
   <br>
@@ -39,10 +35,13 @@
       <div class="bg-white py-2 collapse-inner rounded">
         <% @notebooks.each do |notebook| %>
           <div class="btn-group"> <i class="fa-solid fa-book"></i>
-            <%= link_to notebook.title,notebook,class: "dropdown-item "%>
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div>
-          <!-- Example split danger button -->
-
-          <% end %>  </div>
+            <%= link_to notebook.title,notebook,class: "dropdown-item "%><br>
+          </div>
+        <% end %>
+      </div>
     </div>
   </li>
+  <div class="sidebar-card d-none d-lg-flex">
+    <p class="text-center mb-2"><strong>Journal It</strong>: Express your thoughts and feelings freely.</p>
+  </div>
+</ul>

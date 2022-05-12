@@ -41,3 +41,4 @@ yarn-debug.log*
 
 data.ms/*
 dump.rdb
+.DS_Store
