@@ -1,7 +1,6 @@
 class Page < ApplicationRecord
   belongs_to :notebook
 
-  has_rich_text :content
   has_paper_trail
 
   has_many :image_elements, dependent: :destroy
