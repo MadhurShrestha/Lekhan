@@ -1,6 +1,9 @@
 <div class="form-content mt-2">
   <%= form_with(model: [@notebook, @page], class: "content-form", local: true) do  |form|%>
-    <%= form.text_area :content, class: 'wysiwyg-editor' %>
+    <%= form.hidden_field :content, class: "article-content" %>
+    <div id="editor-container" style="height: 30rem; width: 100%;">
+      <%= raw(@page.content) %>
+    </div>
     <div class="buttons mt-3">
       <%= form.submit "Save", class: 'btn btn-info' %>
       <a href="#" class="cancel btn btn-secondary">Cancel</a>

@@ -21,6 +21,7 @@ ActiveStorage.start()
 require("trix")
 require("@rails/actiontext")
 require("jquery")
+import "./quill-editor.js"
 
 document.addEventListener('turbolinks:load', () => {
   document.addEventListener('click', () => {
