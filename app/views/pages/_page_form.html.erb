@@ -1,6 +1,6 @@
 <div class="form-content mt-2">
-  <%= form_with(model: [@notebook, @page], class: "content-form", local: true) do  |form|%>
-    <%= form.hidden_field :content, class: "article-content" %>
+  <%= form_with(model: [@notebook, @page], id: "page-content-form", local: true) do  |form|%>
+    <%= form.hidden_field :content, class: "page-content" %>
     <div id="editor-container" style="height: 30rem; width: 100%;">
       <%= raw(@page.content) %>
     </div>
