@@ -6,10 +6,10 @@ class Page < ApplicationRecord
   has_many :image_elements, dependent: :destroy
   has_many :checklists, dependent: :destroy
 
- include MeiliSearch::Rails
+ # include MeiliSearch::Rails
 
-  meilisearch do
-    attribute :title
-    attribute :content
-  end
+ #  meilisearch do
+ #    attribute :title
+ #    attribute :content
+ #  end
 end

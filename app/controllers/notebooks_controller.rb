@@ -5,7 +5,8 @@ class NotebooksController < ApplicationController
 
   # GET /notebooks or /notebooks.json
   def index
-   @notebooks = Notebook.search(params[:query], filter: ["user_id=#{current_user.id}"])
+   # @notebooks = Notebook.search(params[:query], filter: ["user_id=#{current_user.id}"])
+    @notebooks = current_user.notebooks
     add_breadcrumb("Notebooks")
   end
 
