@@ -10,12 +10,13 @@ class User < ApplicationRecord
   attr_writer :login
 
   def avatar_thumbnail
-    if avatar.attached?
+    return 'namaskar.jpg' unless avatar.attached?
+
+    begin
       avatar.variant(resize_to_limit: [95,95]).processed
-    else
+    rescue ActiveStorage::FileNotFoundError
       "namaskar.jpg"
     end
-
   end
 
   def login
