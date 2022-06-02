@@ -4,6 +4,11 @@ class NotebooksController < ApplicationController
   before_action :set_base_breadcrumbs, only: [:show, :new, :edit]
 
   # GET /notebooks or /notebooks.json
+
+  def home
+    @notebooks = current_user.notebooks
+
+  end
   def index
    # @notebooks = Notebook.search(params[:query], filter: ["user_id=#{current_user.id}"])
     @notebooks = current_user.notebooks

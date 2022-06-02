@@ -8,6 +8,8 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.3",
     "@taoqf/quill-image-resize-module": "^3.0.1",
+    "algoliasearch": "^4.13.1",
+    "autocomplete.js": "^0.38.1",
     "bootstrap": "4.5",
     "jquery": "^3.6.0",
     "noty": "^3.2.0-beta-deprecated",

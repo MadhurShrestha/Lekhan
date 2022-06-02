@@ -73,3 +73,4 @@ gem 'wkhtmltopdf-binary'
 gem 'mail_form'
 gem 'paper_trail'
 
+gem "algoliasearch-rails"

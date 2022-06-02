@@ -42,12 +42,14 @@
                   <hr>
 
                 <% end %>
-                <hr>
                 <div class="text-center">
                   <%= link_to 'Forgot Password?', new_user_password_path, class: 'small' %>
                 </div>
                 <div class="text-center">
-                  <%= link_to 'Journal your thoughts today!', new_user_registration_path, class: 'small' %>
+                  <%= link_to 'New to Journal It? Sign Up Now!', new_user_registration_path, class: 'small' %>
+                </div>
+                <div class="text-center">
+                  <%= link_to "Didn't receive confirmation email?", new_confirmation_path(resource_name) , class: 'small'%><br />
                 </div>
               </div>
             </div>

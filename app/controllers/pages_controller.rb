@@ -5,6 +5,13 @@ class PagesController < ApplicationController
   before_action :set_base_breadcrumbs, only: [:show, :new, :edit]
   skip_before_action :verify_authenticity_token, only: [:update]
 
+
+    def index
+   # @notebooks = Notebook.search(params[:query], filter: ["user_id=#{current_user.id}"])
+    @notebooks = current_user.notebooks.pages
+    add_breadcrumb("Notebooks")
+  end
+
   # GET /pages/1 or /pages/1.json
   def show
     # @notebooks = current_user.notebooks.all.pagy_search(params[:query])

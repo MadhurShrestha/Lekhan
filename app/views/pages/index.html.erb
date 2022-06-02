@@ -1,14 +1,11 @@
-<!-- ViewNotebooks -->
-<!-- End of Sidebar -->
-  <!-- Content Wrapper -->
-  <div id="wrapper">
+<div id="wrapper">
   <%= render "shared/sidebar" %>
+  <!-- End of Sidebar -->
+  <!-- Content Wrapper -->
   <div id="content-wrapper" class="d-flex flex-column">
     <!-- Main Content -->
     <div id="content">
-
       <div class="container">
-
         <div class="row">
           <% @notebooks.each do |notebook| %>
             <div class="col-md-4">
@@ -31,7 +28,9 @@
                     <p class="page-count">
                       <%= notebook.pages.count %> pages
                     </p>
-
+                    <p class="started">
+                      Last updated at <%= notebook.updated_at.strftime("%A, %B, %e, %Y") %>
+                    </p>
                   </div>
                   <%= link_to 'View', notebook, class: 'btn btn-primary' %>
                   <td>
@@ -40,7 +39,6 @@
                     <% end %>
                   </td>
                 </div>
-                <div class="card-footer"> <small class="text-muted "><b>Last modified at <%= notebook.updated_at.strftime("%A, %B, %e, %Y") %></b></small> </div>
               </div>
             </div>
             <% end %>
@@ -50,3 +48,4 @@
     </div>
   </div>
 </div>
+<!-- End of Content Wrapper -->
