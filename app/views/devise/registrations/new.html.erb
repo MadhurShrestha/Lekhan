@@ -46,15 +46,11 @@
             <%= f.submit "Register Account", class: "btn btn-primary btn-user btn-block" %>
             <% end %>
             <hr>
-            <div class="text-center">
-              <%= link_to 'Forgot Password?', new_user_password_path, class: 'small' %>
-            </div>
+
             <div class="text-center">
               <%= link_to 'Go to my journal! ', new_user_session_path, class: 'small' %>
             </div>
-            <div class="text-center">
-                <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) , class: 'small'%><br />
-            </div>
+
           </div>
         </div>
       </div>

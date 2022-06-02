@@ -2,12 +2,16 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <% if (user_signed_in?) %>
-    <%= render 'shared/breadcrumbs' %>
-
+ <a id="home"></a>
+  <div id="logo">
+    <a href="/">
+     <%= image_tag("logo.png",width:"180", height:"" ,alt:"")%>
+      &nbsp;
+  </div>
           <% else %>
-          <li class="nav-item"> <a class="nav-link" href="#about">About</a> </li>
-          <li class="nav-item"> <a class="nav-link" href="#features">Features</a> </li>
-          <li class="nav-item"> <a class="nav-link" href="#features">Security</a> </li>
+              <a href="/">
+     <%= image_tag("logo.png",width:"180", height:"" ,alt:"")%>
+
 
       <% end %>
     </ul>
@@ -23,10 +27,15 @@
         <li class="nav-item dropdown no-arrow ">
 
 
-          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%= current_user.username %></span>
-              <%= image_tag(current_user.avatar_thumbnail) if current_user.avatar.attached? %>
-          </a>
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+            <div class="typography h6 mt-4">
+            Welcome, <%= current_user.username %>!
+          </span>
+            <%= image_tag(current_user.avatar_thumbnail) if current_user.avatar.attached? %>
 
+          </div>
+        </a>
 
           <!-- Dropdown - User Information -->
           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

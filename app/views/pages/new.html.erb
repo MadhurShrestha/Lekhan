@@ -58,10 +58,11 @@
         </div>
 </ul>
 
-
-
 <div class="container mt-3">
+  <%= render 'title_form', notebook: @notebook, page: @page %>
 
-<%= render 'form', notebook: @notebook, page: @page%>
+  <%= DateTime.current.strftime("%A, %e %B ") %>
+
+  <%= render 'page_form', notebook: @notebook, page: @page%>
 </div>
 </div>

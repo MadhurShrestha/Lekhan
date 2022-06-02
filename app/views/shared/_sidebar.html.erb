@@ -1,18 +1,15 @@
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
   <!-- Sidebar - Brand -->
-  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-    <div class="sidebar-brand-icon rotate-n-15"> <i class="fa-solid fa-pen-fancy"></i> </div>
-    <div class="sidebar-brand-text ml-3">Journal It</div>
-  </a>
+
   <!-- Divider -->
   <hr class="sidebar-divider my-0">
   <!-- Nav Item - Dashboard -->
   <li class="nav-item active">
-    <a class="nav-link" href="/"> <i class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span></a>
+    <a class="nav-link" href="/"> </a>
   </li>
   <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-    <div class="input-group ">
+    <div class="input-group mr-2">
       <%= form_with url: notebooks_path, method: :get do |form| %>
         <%= form.search_field :query, placeholder: 'Search...', class: 'form-control' %>
       <% end %>
@@ -31,6 +28,8 @@
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"> <i class="fa-solid fa-book-journal-whills"></i>Notebooks </a>
+    <a class="nav-link collapsed" href="/notebooks" aria-expanded="true" aria-controls="collapseTwo"> <i class="fa-solid fa-book-journal-whills"></i>My Notebooks </a>
+
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <% @notebooks.each do |notebook| %>

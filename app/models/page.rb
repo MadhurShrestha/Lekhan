@@ -8,6 +8,13 @@ class Page < ApplicationRecord
 
  # include MeiliSearch::Rails
 
+  include AlgoliaSearch
+
+  algoliasearch do
+    attribute :title
+    # Use all default configuration
+  end
+
  #  meilisearch do
  #    attribute :title
  #    attribute :content

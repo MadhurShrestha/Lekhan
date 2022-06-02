@@ -18,6 +18,11 @@ class Notebook < ApplicationRecord
   #   filterable_attributes [:user_id]
   # end
 
+  include AlgoliaSearch
+
+  algoliasearch do;
+end
+
   def get_next_page_position
     if pages.none? { |page| page.persisted?}
       1
