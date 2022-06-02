@@ -19,10 +19,8 @@ class Notebook < ApplicationRecord
   # end
 
   include AlgoliaSearch
-
   algoliasearch do;
-end
-
+  end
   def get_next_page_position
     if pages.none? { |page| page.persisted?}
       1
