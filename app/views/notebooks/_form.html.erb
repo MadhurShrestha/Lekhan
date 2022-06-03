@@ -1,15 +1,16 @@
 <div class="container">
-<%= form_with(model: notebook) do |form| %>
-  <% if notebook.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(notebook.errors.count, "error") %> prohibited this notebook from being saved:</h2>
+  <%= form_with(model: notebook) do |form| %>
+  <div class="modal-body">
+   <% if notebook.errors.any? %>
+   <div id="error_explanation">
+    <h2><%= pluralize(notebook.errors.count, "error") %> prohibited this notebook from being saved:</h2>
 
-      <ul>
-        <% notebook.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+    <ul>
+      <% notebook.errors.each do |error| %>
+      <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
   <% end %>
 
   <div class="field mb-2">
@@ -17,12 +18,15 @@
     <%= form.text_field :title, class: 'form-control' %>
   </div>
 
-  <div class="actions">
+
+</div>
+<div class="modal-footer">
+<div class="actions">
     <%= form.submit class: 'btn btn-primary'%>
-      <%= link_to notebooks_path,class: 'btn btn-outline-secondary' do %>
-  <i class="fa-solid fa-arrow-left-long"></i>
-  <% end %>
 
   </div>
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+</div>
+
 <% end %>
-  </div>
+</div>
