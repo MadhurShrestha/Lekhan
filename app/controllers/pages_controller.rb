@@ -8,7 +8,7 @@ class PagesController < ApplicationController
 
     def index
    # @notebooks = Notebook.search(params[:query], filter: ["user_id=#{current_user.id}"])
-    @notebooks = current_user.notebooks.pages
+       @page = Page.search(params[:query])
     add_breadcrumb("Notebooks")
   end
 

@@ -3,15 +3,15 @@ class NotebooksController < ApplicationController
   before_action :set_notebook, only: %i[ show edit update destroy ]
   before_action :set_base_breadcrumbs, only: [:show, :new, :edit]
 
-  # GET /notebooks or /notebooks.json
+
 
   def home
     @notebooks = current_user.notebooks
-
   end
+
+  # GET /notebooks or /notebooks.json
   def index
-   # @notebooks = Notebook.search(params[:query], filter: ["user_id=#{current_user.id}"])
-    @notebooks = current_user.notebooks
+   @notebooks = Notebook.search(params[:query])
     add_breadcrumb("Notebooks")
   end
 
@@ -52,9 +52,11 @@ class NotebooksController < ApplicationController
 
     respond_to do |format|
       if @notebook.save
+        format.js
         format.html { redirect_to @notebook, notice: "Notebook was successfully created." }
         format.json { render :show, status: :created, location: @notebook }
       else
+        format.js
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @notebook.errors, status: :unprocessable_entity }
       end
