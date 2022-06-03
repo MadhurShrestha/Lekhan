@@ -36,10 +36,11 @@ class PagesController < ApplicationController
 
   # GET /pages/new
   def new
-    add_breadcrumb('New Page')
+ @notebooks = current_user.notebooks.all
+      add_breadcrumb('New Page')
     @page = Page.new
-  end
 
+  end
   # GET /pages/1/edit
   def edit
     add_breadcrumb(@page.title, notebook_page_path(@notebook,@page))
