@@ -42,7 +42,7 @@
             <%= link_to edit_user_registration_path,class: "dropdown-item" do%> <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Edit Your profile
               <%end%>
 
-                <%= link_to destroy_user_session_path,method: :delete,class: 'dropdown-item' do%> <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Log Out
+                <%= button_to destroy_user_session_path,method: :delete,class: 'dropdown-item' do%> <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Log Out
                   <% end %>
           </div>
         </li>
