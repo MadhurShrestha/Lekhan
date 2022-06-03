@@ -21,8 +21,26 @@
   <!-- Heading -->
   <div class="sidebar-heading"> New Notebook
     <div class="buttons ">
-      <%= link_to new_notebook_path, class: 'btn btn-outline-info' do %> <i class="fa-solid fa-circle-plus "></i>
+      <%= link_to new_notebook_path, class: 'btn btn-outline-info',data: {toggle: 'modal', target: '#newNotebookModal', remote: true} do %> <i class="fa-solid fa-circle-plus "></i>
         <% end %>
+
+<!-- Modal -->
+<div class="modal fade" id="newNotebookModal" tabindex="-1" aria-labelledby="newNotebookModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newNotebookModalLabel">New Notebook</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+     <div id="newNotebookForm">
+
+     </div>
+    </div>
+  </div>
+</div>
+
     </div>
   </div>
   <!-- Nav Item - Pages Collapse Menu -->
@@ -44,3 +62,5 @@
     <p class="text-center mb-2"><strong>Journal It</strong>: Express your thoughts and feelings freely.</p>
   </div>
 </ul>
+
+

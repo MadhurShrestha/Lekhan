@@ -1,68 +1,49 @@
 <div id="wrapper">
+  <!-- Sidebar -->
+  <%= render "shared/sidebar" %>
 
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-  <!-- Sidebar - Brand -->
-  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-    <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fa-solid fa-pen-fancy"></i>
-    </div>
-    <div class="sidebar-brand-text ml-3">
-        Journal It
-    </div>
-  </a>
-  <!-- Divider -->
-  <hr class="sidebar-divider my-0">
-  <!-- Nav Item - Dashboard -->
-  <li class="nav-item active">
-    <a class="nav-link" href="/"> <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard</span>
-    </a>
-  </li>
-  <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-    <div class="input-group ">
-      <%= form_with url: notebooks_path, method: :get do |form| %>
-        <%= form.search_field :query %>
-          <div class="buttons ">
-            <%= form.button "Search", class: 'btn btn-secondary',placeholder: "Search for ...." do %> <i class="fa-solid fa-magnifying-glass"></i>
-              <% end %>
-                <% end %>
-          </div>
-    </div>
-  </form>
-  <br>
-  <!-- Divider -->
-  <hr class="sidebar-divider">
-  <!-- Heading -->
-  <div class="sidebar-heading"> Interface
-    <div class="buttons ">
-      <%= link_to new_notebook_path, class: 'btn btn-outline-info' do %> <i class="fa-solid fa-circle-plus "></i>
-        <% end %>
-    </div>
-  </div>
-  <!-- Nav Item - Pages Collapse Menu -->
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"> <i class="fa-solid fa-book-journal-whills"></i>Notebooks </a>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded">
-        <% @notebook.pages.each do |page| %>
-          <div class="btn-group"> <i class="fa-solid fa-book"></i>
-            <%= link_to @notebook.pages,notebook_pages_path,class: "dropdown-item "%>
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div>
-          <!-- Example split danger button -->
+  <!-- End of Sidebar -->
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+      <div class="container mt-3">
+    <%= render 'shared/breadcrumbs' %>
 
-          <% end %> <a class="collapse-item" href="/notebooks/">List</a> </div>
-    </div>
-  </li>
-          <div class="sidebar-card d-none d-lg-flex">
-                <p class="text-center mb-2"><strong>Journal It</strong>: Express your thoughts and feelings freely.</p>
-        </div>
-</ul>
-
-<div class="container mt-3">
+       <div class="container mt-3">
   <%= render 'title_form', notebook: @notebook, page: @page %>
 
   <%= DateTime.current.strftime("%A, %e %B ") %>
 
   <%= render 'page_form', notebook: @notebook, page: @page%>
 </div>
+
+      </div>
+    </div>
+
+
+  </div>
 </div>
+
+<script type="text/javascript">
+  function savePage() {
+    $('#auto-save-status').html('Saving...').removeClass('text-danger').removeClass('text-success');
+    var form = $('form.content-form').serialize();
+    $.ajax({
+      type: 'PUT',
+      url: '/notebooks/<%= @notebook.id %>/pages/<%= @page.id %>.json',
+      data: form,
+      dataType: 'JSON',
+      success: function() {
+        $('#auto-save-status').html('Saved.').removeClass('text-danger').addClass('text-success')
+      },
+      error: function() {
+        $('#auto-save-status').html('Autosave Failed. Please try saving.').removeClass('text-success').addClass('text-danger');
+      }
+    });
+  }
+
+  document.addEventListener('turbolinks:load', () => {
+    setInterval(savePage, 10000);
+  });
+</script>
