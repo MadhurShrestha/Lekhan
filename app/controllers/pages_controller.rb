@@ -57,19 +57,18 @@ class PagesController < ApplicationController
     end
   end
 
-
-
   def update
     respond_to do |format|
       if @page.update(page_params)
-        format.html { redirect_to notebook_page_path(@notebook,@page) }
+        format.html { redirect_to notebook_page_path(@notebook, @page) }
         format.json { render json: {updated_at: ActionController::Base.helpers.time_ago_in_words(@page.updated_at)}}
       else
         format.html { render :edit}
         format.json { render json: @page.errors, status: :unprocessable_entity }
       end
+    end
   end
-end
+
   # DELETE /pages/1 or /pages/1.json
   def destroy
     @page.destroy
@@ -77,24 +76,22 @@ end
   end
 
   private
-
   def set_notebook
     @notebook = current_user.notebooks.find(params[:notebook_id])
-
   end
-    # Use callbacks to share common setup or constraints between actions.
-    def set_page
-      @page = @notebook.pages.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def page_params
-      params.require(:page).permit(:title, :content)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_page
+    @page = @notebook.pages.find(params[:id])
+  end
 
-    def set_base_breadcrumbs
-      add_breadcrumb("Notebooks",notebooks_path)
-      add_breadcrumb(@notebook.title,notebook_path(@notebook))
-    end
+  # Only allow a list of trusted parameters through.
+  def page_params
+    params.require(:page).permit(:title, :content)
+  end
 
+  def set_base_breadcrumbs
+    add_breadcrumb("Notebooks",notebooks_path)
+    add_breadcrumb(@notebook.title,notebook_path(@notebook))
+  end
 end

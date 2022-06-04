@@ -1,26 +1,40 @@
 <div class="row">
-    <% @pages.each do |page| %>
-        <div class="col-md-3 mb-3">
-            <div class="card-group">
-                <div class="card">
-                    <div class="card-body">
-                        <small><i class="fa-solid fa-book-journal-whills"></i> <%= page.notebook.title.to_s.truncate(10) %></small>
-                        <div class="card-title d-flex justify-content-between">
-                            <h5><%= link_to (page.title || 'No title').truncate(20), notebook_page_path(page.notebook, page) %></h5>
-                            <div>
-                                <%= link_to notebook_page_path(page.notebook, page, format: :pdf),class: 'text-info' do %> <i class="fa-solid fa-file-pdf"></i>
-                                    <% end %>
-                                <%= link_to notebook_page_path(page.notebook, page), method: :delete, data: { confirm:"Are you sure?" },class: 'text-danger' do %> <i class="fas fa-trash "></i>
-                                    <% end %>
-                            </div>
-                        </div>
-                        <p class="card-text">
-                            <%= strip_tags(page.content).to_s.truncate_words(10) %>
-                        </p>
-                    </div>
-                    <div class="card-footer"> <small class="text-muted"><b>Last modified at <%= page.updated_at.strftime("%A, %B, %e, %Y") %></b></small> </div>
-                </div>
-            </div>
+  <div class="offset-md-2 col-md-8">
+    <%= form_with url: search_index_path, method: :get, class: 'mb-3' do |form| %>
+      <div class="input-group">
+        <%= form.search_field :query, placeholder: 'Search...', class: 'form-control border-1 small', value: params[:query] %>
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button">
+            <i class="fas fa-search fa-sm"></i>
+          </button>
         </div>
+      </div>
     <% end %>
+  </div>
+</div>
+<div class="row">
+  <% @pages.each do |page| %>
+    <div class="col-md-3 mb-3">
+      <div class="card-group">
+        <div class="card">
+          <div class="card-body">
+            <small><i class="fa-solid fa-book-journal-whills"></i> <%= page.notebook.title.to_s.truncate(10) %></small>
+            <div class="card-title d-flex justify-content-between">
+              <h5><%= link_to (page.title || 'No title').truncate(20), notebook_page_path(page.notebook, page) %></h5>
+              <div>
+                <%= link_to notebook_page_path(page.notebook, page, format: :pdf),class: 'text-info' do %> <i class="fa-solid fa-file-pdf"></i>
+                    <% end %>
+                <%= link_to notebook_page_path(page.notebook, page), method: :delete, data: { confirm:"Are you sure?" },class: 'text-danger' do %> <i class="fas fa-trash "></i>
+                    <% end %>
+              </div>
+            </div>
+            <p class="card-text">
+              <%= strip_tags(page.content).to_s.truncate_words(10) %>
+            </p>
+          </div>
+          <div class="card-footer"> <small class="text-muted"><b>Last modified at <%= page.updated_at.strftime("%A, %B, %e, %Y") %></b></small> </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
