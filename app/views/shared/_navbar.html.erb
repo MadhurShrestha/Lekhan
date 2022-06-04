@@ -2,24 +2,22 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <% if (user_signed_in?) %>
- <a id="home"></a>
-  <div id="logo">
-    <a href="/">
-     <%= image_tag("logo.png",width:"180", height:"" ,alt:"")%>
-      &nbsp;
-  </div>
-          <% else %>
-              <a href="/">
-     <%= image_tag("logo.png",width:"180", height:"" ,alt:"")%>
-
-
+        <a id="home"></a>
+        <div id="logo">
+          <a href="/">
+            <%= image_tag("logo.png",width:"180", height:"" ,alt:"")%>
+          </a>
+        </div>
+      <% else %>
+        <a href="/">
+          <%= image_tag("logo.png",width:"180", height:"" ,alt:"")%>
+        </a>
       <% end %>
     </ul>
   </div>
-  <!-- Topbar Navbar -->
   <div class="navbar-nav ">
     <% if !(user_signed_in?) %>
-    <%= link_to "Sign In", new_user_session_path, class: 'btn btn-sm btn-primary ' %>&nbsp;
+      <%= link_to "Sign In", new_user_session_path, class: 'btn btn-sm btn-primary ' %>&nbsp;
         <%= link_to "Register", new_user_registration_path, class: 'btn btn-sm btn-primary' %>
       <% else %>
         <div class="topbar-divider d-none d-sm-block"></div>
