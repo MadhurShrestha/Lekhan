@@ -1,6 +1,8 @@
 class Page < ApplicationRecord
   include PgSearch::Model
 
+  validates :title, presence: true
+
   before_save :strip_content_and_save
 
   pg_search_scope :search, against: [:title, :stripped_content],

@@ -1,21 +1,13 @@
-<div id="wrapper">
-  <!-- Sidebar -->
-  <%= render "shared/sidebar" %>
-  <!-- End of Sidebar -->
-  <!-- Content Wrapper -->
-  <div id="content-wrapper" class="d-flex flex-column">
-    <!-- Main Content -->
-    <div id="content">
-      <div class="container mt-3">
-        <%= render 'shared/breadcrumbs' %>
-        <div class="container mt-3">
-          <%= render 'title_form', notebook: @notebook, page: @page %>
-
-          <%= DateTime.current.strftime("%A, %e %B ") %>
-
-          <%= render 'page_form', notebook: @notebook, page: @page%>
-        </div>
-      </div>
+<div class="form-content mt-3">
+  <%= form_with(model: [@notebook, @page], id: "page-content-form", local: true) do  |form|%>
+    <%= form.text_field :title, class: 'form-control mb-2', placeholder: 'Title', required: true %>
+    <%= form.hidden_field :content, class: "page-content" %>
+    <div id="editor-container" style="height: 65vh; width: 100%;">
+      <%= raw(@page.content) %>
     </div>
-  </div>
+    <div class="buttons mt-3">
+      <%= form.submit "Save", class: 'btn btn-info' %>
+      <a href="#" class="cancel btn btn-secondary">Cancel</a>
+    </div>
+  <% end %>
 </div>
