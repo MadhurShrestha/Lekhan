@@ -16,7 +16,7 @@
                     <td>
                     <td>
                         <h2><%= page.title %></h2>
-                        <b><p><%= strip_tags(page.content) %></p> </b>
+                        <b><p><%= page.content.html_safe %></p> </b>
                         <hr>
                     </td>
 

@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
   after_commit :add_default_avatar, on: %i[create update]
 
+  has_paper_trail
   attr_writer :login
 
   def avatar_thumbnail
