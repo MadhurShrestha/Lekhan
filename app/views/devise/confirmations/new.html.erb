@@ -13,7 +13,7 @@
             <div class="col-lg-6">
               <div class="p-5">
                 <div class="text-center">
-                  <h1 class="h4 text-gray-900 mb-4">Resend Confirmations Instructions</h1>
+                  <h1 class="h4 text-gray-900 mb-4 mr-4">Resend Confirmation Email</h1>
                 </div>
 
             <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
@@ -21,16 +21,23 @@
 
             <div class="form-group">
               <%= f.label :email %><br />
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "Email",class:"form-control form-control-user", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
             </div>
 
-            <div class="actions">
-              <%= f.submit "Resend confirmation instructions" , class: "btn btn-primary btn-user btn-primary"%>
+            <div class="actions float-right mb-0">
+              <%= f.submit "Submit" , class: "btn btn-primary btn-user btn-primary"%>
             </div>
 
 <% end %>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-    <%= render "devise/shared/links" %>
+
+
 </div>
             </div>
           </div>

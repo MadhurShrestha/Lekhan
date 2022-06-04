@@ -6,16 +6,17 @@
     </div>
     <div class="buttons mt-3">
       <%= form.submit "Save", class: 'btn btn-info' %>
-      <a href="#" class="cancel btn btn-secondary">Cancel</a>
       <div class="float-right">
         <span id='auto-save-status' class='p-1'>
           <% if @page.updated_at %>
             Last modified <%= time_ago_in_words(@page.updated_at) %> ago.
-             Total Words: <%= @page.content.split.size %>
           <% end %>
         </span>
-
-
+          <% if @page.content? %>
+          Total words: <%= @page.content.split.size %>
+          <% else %>
+          <% nil %>
+          <% end %>
       </div>
     </div>
   <% end %>

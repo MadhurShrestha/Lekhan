@@ -7,16 +7,22 @@
     </div>
     <div class="form-content d-none">
       <%= form_with(model: [@notebook, @page], local: false, class: 'form-inline') do  |form|%>
-        <%= form.text_field :title, class: 'form-control w-75' %>
-        <%= form.button type: 'submit', class: 'btn btn-link p-0' do %>
-          <i class="fas fa-fw fa-check"></i>
-        <% end %>
-        <a href="#" class="cancel text-danger"><i class="fas fa-fw fa-times"></i></a>
+      <%= form.text_field :title, class: 'form-control w-75' %>
+      <%= form.button type: 'submit', class: 'btn btn-link p-0' do %>
+      <i class="fas fa-fw fa-check"></i>
+      <% end %>
+      <a href="#" class="cancel text-danger"><i class="fas fa-fw fa-times"></i></a>
       <% end %>
     </div>
   </div>
-              <%= link_to notebook_page_path(@notebook, format: :pdf),class: 'btn btn-outline-secondary' do %>
-              <i class="fa-solid fa-file-pdf"></i>
-            <% end %>
+  <div class="float-right">
+    <% if @page.content? %>
+    <%= link_to notebook_page_path(@notebook, format: :pdf),class: 'btn btn-outline-secondary' do %>
+    <i class="fa-solid fa-file-pdf"></i>
+    <% end %>
+    <% else %>
+    <% nil %>
+    <% end %>
   <%= DateTime.current.strftime("%A, %e %B ") %>
+</div>
 </div>
