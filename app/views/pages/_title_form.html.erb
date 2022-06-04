@@ -1,5 +1,5 @@
-<div class='d-flex justify-content-between mb-4'>
-  <div class="title w-100">
+<div class='d-flex justify-content-between mb-4 mt-4'>
+  <div class="title" style="width:80%">
     <div class="text-content">
       <h2 class="cursive">
         <%= @page.title.present? ? @page.title : 'TITLE....' %>
@@ -15,6 +15,5 @@
       <% end %>
     </div>
   </div>
-
-
+  <%= DateTime.current.strftime("%A, %e %B ") %>
 </div>

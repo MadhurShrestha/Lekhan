@@ -1,32 +1,26 @@
 <div class="container">
   <%= form_with(model: notebook) do |form| %>
-  <div class="modal-body">
-   <% if notebook.errors.any? %>
-   <div id="error_explanation">
-    <h2><%= pluralize(notebook.errors.count, "error") %> prohibited this notebook from being saved:</h2>
-
-    <ul>
-      <% notebook.errors.each do |error| %>
-      <li><%= error.full_message %></li>
+    <div class="modal-body">
+      <% if notebook.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(notebook.errors.count, "error") %> prohibited this notebook from being saved:</h2>
+          <ul>
+            <% notebook.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
       <% end %>
-    </ul>
-  </div>
+      <div class="field mb-2">
+        <%= form.label :title %>
+        <%= form.text_field :title, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="actions">
+        <%= form.submit class: 'btn btn-primary'%>
+      </div>
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
   <% end %>
-
-  <div class="field mb-2">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: 'form-control' %>
-  </div>
-
-
-</div>
-<div class="modal-footer">
-<div class="actions">
-    <%= form.submit class: 'btn btn-primary'%>
-
-  </div>
-  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-</div>
-
-<% end %>
 </div>
