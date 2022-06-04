@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_breadcrumbs
+  before_action :set_user_notebooks
   include Pagy::Backend
 
   def configure_permitted_parameters
@@ -21,4 +22,11 @@ class ApplicationController < ActionController::Base
     @breadcrumbs = []
   end
 
+  def set_user_notebooks
+    if user_signed_in?
+      @user_notebooks = current_user.notebooks
+    else
+      @user_notebooks = []
+    end
+  end
 end

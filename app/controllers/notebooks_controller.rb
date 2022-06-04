@@ -7,8 +7,8 @@ class NotebooksController < ApplicationController
 
   def home
     @notebooks = current_user.notebooks
-
   end
+
   def index
    # @notebooks = Notebook.search(params[:query], filter: ["user_id=#{current_user.id}"])
     @notebooks = current_user.notebooks

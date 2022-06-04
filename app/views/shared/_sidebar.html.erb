@@ -33,7 +33,7 @@
 
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
-        <% @notebooks.each do |notebook| %>
+        <% @user_notebooks.each do |notebook| %>
           <div class="btn-group"> <i class="fa-solid fa-book"></i>
             <%= link_to notebook.title,notebook,class: "dropdown-item "%><br>
           </div>
