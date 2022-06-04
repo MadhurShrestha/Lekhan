@@ -7,7 +7,7 @@ class NotebooksController < ApplicationController
   end
 
   def index
-   @notebooks = current_user.notebooks
+    @notebooks = current_user.notebooks
 
     add_breadcrumb("Notebooks")
   end
