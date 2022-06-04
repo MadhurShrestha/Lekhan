@@ -8,40 +8,38 @@
     <!-- Main Content -->
     <div id="content">
       <div class="container mt-3">
-    <%= render 'shared/breadcrumbs' %>
+        <%= render 'shared/breadcrumbs' %>
 
         <%= render 'title_form' %>
         <div class=" mt-2">
-      <%= form_with(model: [@notebook, @page, @checklist], html: { class: 'float-right'}, local: false) do  |form|%>
-      <%= form.submit "Add Checklist", class: 'btn btn-primary ml-5 mb-0 ' %>
-      <% end %>
-    </div>
-    <%= render @page.checklists %>
+          <%= form_with(model: [@notebook, @page, @checklist], local: true) do  |form|%>
+            <%= form.submit "Add Checklist", class: 'btn btn-primary ml-5 mb-0 ' %>
+          <% end %>
+        </div>
+        <%= render @page.checklists %>
         <%= DateTime.current.strftime("%A, %e %B ") %>
         <%= render 'page_form' %>
-        <div class="float-right ml-4">
-          <span>
-          Last modified at <%= @notebook.updated_at.strftime("%A, %B, %e, %Y") %>
-          </span>
       </div>
     </div>
-
-
   </div>
-</div>
 </div>
 
 <script type="text/javascript">
   function savePage() {
     $('#auto-save-status').html('Saving...').removeClass('text-danger').removeClass('text-success');
-    var form = $('form.content-form').serialize();
+
+    // updated input with latest QuillJS content
+    body = document.querySelector('input[class=page-content]');
+    body.value = document.querySelector(".ql-editor").innerHTML;
+
+    var form = $('form#page-content-form').serialize();
     $.ajax({
       type: 'PUT',
       url: '/notebooks/<%= @notebook.id %>/pages/<%= @page.id %>.json',
       data: form,
       dataType: 'JSON',
-      success: function() {
-        $('#auto-save-status').html('Saved.').removeClass('text-danger').addClass('text-success')
+      success: function(response) {
+        $('#auto-save-status').html('Last saved ' + response['updated_at'] + ' ago').removeClass('text-danger').addClass('text-success')
       },
       error: function() {
         $('#auto-save-status').html('Autosave Failed. Please try saving.').removeClass('text-success').addClass('text-danger');

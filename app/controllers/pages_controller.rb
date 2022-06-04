@@ -36,10 +36,9 @@ class PagesController < ApplicationController
 
   # GET /pages/new
   def new
- @notebooks = current_user.notebooks.all
-      add_breadcrumb('New Page')
+    @notebooks = current_user.notebooks.all
+    add_breadcrumb('New Page')
     @page = Page.new
-
   end
   # GET /pages/1/edit
   def edit
@@ -64,7 +63,7 @@ class PagesController < ApplicationController
     respond_to do |format|
       if @page.update(page_params)
         format.html { redirect_to notebook_page_path(@notebook,@page) }
-        format.json { render json: @page}
+        format.json { render json: {updated_at: ActionController::Base.helpers.time_ago_in_words(@page.updated_at)}}
       else
         format.html { render :edit}
         format.json { render json: @page.errors, status: :unprocessable_entity }

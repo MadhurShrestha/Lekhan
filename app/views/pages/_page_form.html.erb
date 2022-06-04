@@ -1,6 +1,6 @@
 <div class="form-content mt-3">
   <%= form_with(model: [@notebook, @page], id: "page-content-form", local: true) do  |form|%>
-    <%= form.hidden_field :content, class: "page-content " %>
+    <%= form.hidden_field :content, class: "page-content" %>
     <div id="editor-container" style="height: 50rem; width: 100%;">
       <%= raw(@page.content) %>
     </div>
@@ -8,8 +8,7 @@
       <%= form.submit "Save", class: 'btn btn-info' %>
       <a href="#" class="cancel btn btn-secondary">Cancel</a>
       <div class="float-right">
-        <br>
-        <span id='auto-save-status' class='p-1'></span>
+        <span id='auto-save-status' class='p-1'>Last modified <%= time_ago_in_words(@page.updated_at) %> ago.</span>
       </div>
     </div>
   <% end %>
