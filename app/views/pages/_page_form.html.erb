@@ -11,11 +11,9 @@
         <span id='auto-save-status' class='p-1'>
           <% if @page.updated_at %>
             Last modified <%= time_ago_in_words(@page.updated_at) %> ago.
-             Total Words: <%= @page.content.split.size %>
+            Total Words: <%= @page.content.to_s.split.size %>
           <% end %>
         </span>
-
-
       </div>
     </div>
   <% end %>
