@@ -1,4 +1,4 @@
-<div class='d-flex justify-content-between mb-4 mt-4'>
+<div class='d-flex justify-content-between mb-4'>
   <div class="title" style="width:80%">
     <div class="text-content">
       <h2 class="cursive">
@@ -15,5 +15,8 @@
       <% end %>
     </div>
   </div>
+              <%= link_to notebook_page_path(@notebook, format: :pdf),class: 'btn btn-outline-secondary' do %>
+              <i class="fa-solid fa-file-pdf"></i>
+            <% end %>
   <%= DateTime.current.strftime("%A, %e %B ") %>
 </div>

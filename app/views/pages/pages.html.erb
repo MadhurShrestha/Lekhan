@@ -10,6 +10,6 @@
 
 </div>
   <h2> <%= @page.title %></h2>
-  <p> <%= strip_tags(@page.content) %></p>
+  <p> <%= (@page.content.html_safe) %></p>
 
   </div>

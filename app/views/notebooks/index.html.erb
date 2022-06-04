@@ -1,52 +1,39 @@
-<!-- ViewNotebooks -->
-<!-- End of Sidebar -->
-  <!-- Content Wrapper -->
-  <div id="wrapper">
-  <%= render "shared/sidebar" %>
-  <div id="content-wrapper" class="d-flex flex-column">
-    <!-- Main Content -->
-    <div id="content">
-
-      <div class="container">
-
-        <div class="row">
-          <% @notebooks.each do |notebook| %>
-            <div class="col-md-4">
-              <div class="card notebook-card mb-4 ">
-                <div class="card-body">
-                  <h4 class='card-title d-flex justify-content-between'>
-                    <%= link_to notebook.title,notebook %>
-                    <!-- Example split danger button -->
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-outline-info dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-h"></i>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <td><%= link_to 'Edit', edit_notebook_path(notebook), class: 'dropdown-item'%></td>
-                        <td><%= link_to 'Delete', notebook, method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %></td>
-                      </div>
-                    </div>
-                  </h4>
-                  <div class="stats mb-4">
-                    <p class="page-count">
-                      <%= notebook.pages.count %> pages
-                    </p>
-
-                  </div>
-                  <%= link_to 'View', notebook, class: 'btn btn-primary' %>
-                  <td>
-                    <%= link_to notebook_path(notebook, format: :pdf),class: 'btn btn-outline-secondary' do %>
-                      <i class="fa-solid fa-file-pdf"></i>
-                    <% end %>
-                  </td>
-                </div>
-                <div class="card-footer"> <small class="text-muted "><b>Last modified at <%= notebook.updated_at.strftime("%A, %B, %e, %Y") %></b></small> </div>
-              </div>
+<div class='row'>
+    <div class='col-md-12'>
+        <%= link_to new_notebook_path,class: 'btn btn-primary float-right mb-3' do %>
+            <i class="fas fa-plus "></i> Add Notebook
+        <% end %><!-- Main Content -->
+    </div>
+</div>
+<div class="row">
+  <% @notebooks.each do |notebook| %>
+    <div class="col-md-3">
+      <div class="card notebook-card mb-4 ">
+        <div class="card-body">
+          <div class='card-title d-flex justify-content-between'>
+            <h5><%= link_to notebook.title,notebook %></h5>
+            <div>
+              <%= link_to edit_notebook_path(notebook), class: 'text-info' do %>
+                <i class="fa-solid fa-pencil"></i>
+              <% end %>
+              <%= link_to notebook_path(notebook, format: :pdf), class: 'text-info' do %>
+                <i class="fa-solid fa-file-pdf"></i>
+              <% end %>
+              <%= link_to notebook_path(notebook), method: :delete, data: { confirm:"Are you sure?" },class: 'text-danger' do %>
+                <i class="fas fa-trash "></i>
+              <% end %>
             </div>
-            <% end %>
+          </div>
+          <div class="stats mb-4">
+            <p class="page-count">
+              <%= notebook.pages.count %> pages
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted "><b>Last modified at <%= notebook.updated_at.strftime("%A, %B, %e, %Y") %></b></small>
         </div>
       </div>
-      <!-- End of Main Content -->
     </div>
-  </div>
+  <% end %>
 </div>
