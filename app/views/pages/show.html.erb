@@ -11,14 +11,13 @@
         <%= render 'shared/breadcrumbs' %>
 
         <%= render 'title_form' %>
-        <div class=" mt-2">
+        <%= render 'page_form' %>
+        <div class="text-right mt-2">
           <%= form_with(model: [@notebook, @page, @checklist], local: true) do  |form|%>
-            <%= form.submit "Add Checklist", class: 'btn btn-primary ml-5 mb-0 ' %>
+            <%= form.submit "Add Checklist", class: 'btn btn-primary mb-0 ' %>
           <% end %>
         </div>
         <%= render @page.checklists %>
-        <%= DateTime.current.strftime("%A, %e %B ") %>
-        <%= render 'page_form' %>
       </div>
     </div>
   </div>
