@@ -13,7 +13,7 @@
       </a>
     <% end %>
   </div>
-  <% unless params[:controller] == 'search' %>
+  <% unless params[:controller] == 'search' || !user_signed_in? %>
     <div class="search">
       <%= form_with url: search_index_path, method: :get do |form| %>
         <div class="input-group">

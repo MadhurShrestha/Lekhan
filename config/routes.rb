@@ -9,7 +9,10 @@ Rails.application.routes.draw do
 
   resources :search, only: [:index]
 
-  devise_for :users  # get 'home', to: 'home#index'
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
+
   get 'home', to: 'faq#home'
   get 'index', to: 'tos#index'
 
