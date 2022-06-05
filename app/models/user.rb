@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
   has_many :notebooks, dependent: :destroy
+  has_many :pages, through: :notebooks
   has_one_attached :avatar
   after_commit :add_default_avatar, on: %i[create update]
 

@@ -33,6 +33,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'
 gem 'bootstrap_form'
 
+gem 'pg_search'
+
 group :development, :test do
   gem 'pry-rails'
 end
@@ -72,5 +74,3 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'mail_form'
 gem 'paper_trail'
-
-gem "algoliasearch-rails"

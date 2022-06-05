@@ -3,9 +3,12 @@ Rails.application.routes.draw do
     resources :pages do
       resources :checklists do
         resources :checklist_items
-    end
+      end
     end
   end
+
+  resources :search, only: [:index]
+
   devise_for :users  # get 'home', to: 'home#index'
   get 'home', to: 'faq#home'
   get 'index', to: 'tos#index'
@@ -14,8 +17,8 @@ Rails.application.routes.draw do
 
   root to: "notebooks#home"
 
-devise_scope :user do
-  get   "/check_session_timeout"    => "session_timeout#check_session_timeout"
-  get   "/session_timeout"          => "session_timeout#render_timeout"
-end
+  devise_scope :user do
+    get   "/check_session_timeout"    => "session_timeout#check_session_timeout"
+    get   "/session_timeout"          => "session_timeout#render_timeout"
+  end
 end

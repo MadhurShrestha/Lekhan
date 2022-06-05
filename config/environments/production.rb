@@ -67,12 +67,12 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :authentication => :plain,
-    :address => ENV['MAILGUN_SMTP_SERVER'],
-    :port => ENV['MAILGUN_SMTP_PORT'],
-    :domain => ENV['MAILGUN_DOMAIN'],
-    :user_name => ENV['MAILGUN_SMTP_LOGIN'],
-    :password => ENV['MAILGUN_SMTP_PASSWORD']
+    :authentication => ENV['SMTP_AUTH'],
+    :address => ENV['SMTP_SERVER'],
+    :port => ENV['SMTP_PORT'],
+    :domain => ENV['SMTP_DOMAIN'],
+    :user_name => ENV['SMTP_LOGIN'],
+    :password => ENV['SMTP_PASSWORD']
   }
   config.action_mailer.default_url_options = { host: ENV['MAILER_DEFAULT_URL'] }
 
