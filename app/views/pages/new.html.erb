@@ -1,4 +1,13 @@
-
-<%= render 'title_form' %>
-<%= render 'page_form' %>
-
+<div class="form-content mt-3">
+  <%= form_with(model: [@notebook, @page], id: "page-content-form", local: true) do  |form|%>
+    <%= form.text_field :title, class: 'form-control mb-2', placeholder: 'Title', required: true %>
+    <%= form.hidden_field :content, class: "page-content" %>
+    <div id="editor-container" style="height: 65vh; width: 100%;">
+      <%= raw(@page.content) %>
+    </div>
+    <div class="buttons mt-3">
+      <%= form.submit "Save", class: 'btn btn-info' %>
+      <a href="#" class="cancel btn btn-secondary">Cancel</a>
+    </div>
+  <% end %>
+</div>

@@ -1,50 +1,58 @@
-<nav class="navbar   navbar-expand navbar-light  p-5 mb-0 ">
+<nav class="navbar navbar-expand navbar-light">
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <% if (user_signed_in?) %>
-        <a id="home"></a>
-        <div id="logo">
-          <a href="/">
-            <%= image_tag("logo.png",width:"180", height:"" ,alt:"")%>
-          </a>
-        </div>
-      <% else %>
+    <% if (user_signed_in?) %>
+      <a id="home"></a>
+      <div id="logo">
         <a href="/">
           <%= image_tag("logo.png",width:"180", height:"" ,alt:"")%>
         </a>
-      <% end %>
-    </ul>
+      </div>
+    <% else %>
+      <a href="/">
+        <%= image_tag("logo.png",width:"180", height:"" ,alt:"")%>
+      </a>
+    <% end %>
   </div>
+  <% unless params[:controller] == 'search' %>
+    <div class="search">
+      <%= form_with url: search_index_path, method: :get do |form| %>
+        <div class="input-group">
+          <%= form.search_field :query, placeholder: 'Search...', class: 'form-control border-1 small', value: params[:query] %>
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button">
+              <i class="fas fa-search fa-sm"></i>
+            </button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
   <div class="navbar-nav ">
     <% if !(user_signed_in?) %>
       <%= link_to "Sign In", new_user_session_path, class: 'btn btn-sm btn-primary ' %>&nbsp;
-        <%= link_to "Register", new_user_registration_path, class: 'btn btn-sm btn-primary' %>
-      <% else %>
-        <div class="topbar-divider d-none d-sm-block"></div>
-        <!-- Nav Item - User Information -->
-        <li class="nav-item dropdown no-arrow ">
-
-
+      <%= link_to "Register", new_user_registration_path, class: 'btn btn-sm btn-primary' %>
+    <% else %>
+      <div class="topbar-divider d-none d-sm-block"></div>
+      <!-- Nav Item - User Information -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-            <div class="typography h6 mt-4">
-            Welcome, <%= current_user.username %> !
-          </span>
-            <%= image_tag(current_user.avatar_thumbnail) if current_user.avatar.attached? %>
-
-          </div>
-        </a>
-
+            <div class="typography h3">
+              <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                Welcome, <%= current_user.username %>!
+              </span>
+              <%= image_tag(current_user.avatar_thumbnail, width: '40px') if current_user.avatar.attached? %>
+            </div>
+          </a>
           <!-- Dropdown - User Information -->
           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
             <%= link_to edit_user_registration_path,class: "dropdown-item" do%> <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Edit Your profile
               <%end%>
-
-                <%= button_to destroy_user_session_path,method: :delete,class: 'dropdown-item' do%> <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Log Out
+            <%= button_to destroy_user_session_path,method: :delete,class: 'dropdown-item' do%> <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Log Out
                   <% end %>
           </div>
         </li>
+      </ul>
+    <% end %>
   </div>
-  <% end %>
-    </div>
 </nav>

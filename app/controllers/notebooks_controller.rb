@@ -3,14 +3,12 @@ class NotebooksController < ApplicationController
   before_action :set_notebook, only: %i[ show edit update destroy ]
   before_action :set_base_breadcrumbs, only: [:show, :new, :edit]
 
-
-
   def home
+  end
+
+  def index
     @notebooks = current_user.notebooks
 
-  end
-  def index
-   @notebooks = Notebook.search(params[:query])
     add_breadcrumb("Notebooks")
   end
 

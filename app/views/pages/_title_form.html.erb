@@ -15,14 +15,9 @@
       <% end %>
     </div>
   </div>
-  <div class="float-right">
-    <% if @page.content? %>
-    <%= link_to notebook_page_path(@notebook, format: :pdf),class: 'btn btn-outline-secondary' do %>
-    <i class="fa-solid fa-file-pdf"></i>
-    <% end %>
-    <% else %>
-    <% nil %>
-    <% end %>
+              <%= link_to notebook_pages_path(@notebook, format: :pdf),class: 'btn btn-outline-secondary' do %>
+              <i class="fa-solid fa-file-pdf"></i>
+            <% end %>
   <%= DateTime.current.strftime("%A, %e %B ") %>
 </div>
 </div>

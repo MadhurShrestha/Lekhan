@@ -5,22 +5,6 @@ class Notebook < ApplicationRecord
 
   has_many :pages, dependent: :destroy
 
-  # include MeiliSearch::Rails
-  # extend Pagy::Meilisearch
-
-  # meilisearch do
-  #   attribute :title
-  #   attribute :user_id
-  #   attribute :pages do
-  #     pages.pluck('title')
-  #   end
-
-  #   filterable_attributes [:user_id]
-  # end
-
-  include AlgoliaSearch
-  algoliasearch do;
-  end
   def get_next_page_position
     if pages.none? { |page| page.persisted?}
       1
