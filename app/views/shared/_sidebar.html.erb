@@ -7,8 +7,10 @@
   <!-- Divider -->
   <hr class="sidebar-divider my-0">
   <!-- Nav Item - Pages Collapse Menu -->
-  <li class="nav-item">
-    <h5 class="pl-4 pt-4 text-white">All Notebooks</h5>
+  <li class="nav-item active">
+    <%= link_to notebooks_path, class: "nav-link pb-0" do %>
+      <h5>All Notebooks</h5></a>
+    <% end %>
   </li>
   <li class="nav-item">
     <% @user_notebooks.each do |notebook| %>

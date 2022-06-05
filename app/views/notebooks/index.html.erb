@@ -1,13 +1,3 @@
-<div class='row'>
-    <div class='col-md-12'>
-    <div class="buttons ">
-      <%= link_to new_notebook_path, class: 'btn btn-primary float-right',data: {toggle: 'modal', target: '#newNotebookModal', remote: true} do %>
-        <i class="fa-solid fa-circle-plus ">New Notebook</i>
-      <% end %>
-    </div>
-
-    </div>
-</div>
 <div class="row">
   <% @notebooks.each do |notebook| %>
     <div class="col-md-3">
