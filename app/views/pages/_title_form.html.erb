@@ -15,11 +15,10 @@
       <% end %>
     </div>
   </div>
-            <div class="ml-5">
-              <%= link_to notebook_page_path(@notebook, format: :pdf),class: 'text-info ml-5' do %>
-              <i class="fa-solid fa-file-pdf"></i>
-            <% end %>
-            </div>
+  <div class="ml-5">
+    <%= link_to notebook_page_path(@notebook, format: :pdf),class: 'text-info ml-5' do %>
+      <i class="fa-solid fa-file-pdf"></i>
+    <% end %>
+  </div>
   <%= DateTime.current.strftime("%A, %e %B ") %>
-</div>
 </div>
