@@ -7,9 +7,9 @@
 </div>
 <div class="row">
     <% @notebook.pages.each do |page| %>
-        <div class="col-md-3 mb-3">
+        <div class="col-md-4 mb-3 col-sm-6 col-lg-3">
             <div class="card-group">
-                <div class="card">
+                <div class="card shadow-sm">
                     <div class="card-body">
                         <div class="card-title d-flex justify-content-between">
                             <h5><%= link_to (page.title || 'No title').truncate(20), notebook_page_path(@notebook, page) %></h5>
@@ -24,7 +24,7 @@
                             <%= strip_tags(page.content).to_s.truncate_words(10) %>
                         </p>
                     </div>
-                    <div class="card-footer"> <small class="text-muted"><b>Last modified at <%= @notebook.updated_at.strftime("%A, %B, %e, %Y") %></b></small> </div>
+                    <div class="card-footer"> <small class="text-muted">Last modified at <%= @notebook.updated_at.strftime("%A, %B, %e, %Y") %></small> </div>
                 </div>
             </div>
         </div>

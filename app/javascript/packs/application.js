@@ -12,7 +12,6 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-
 import "../stylesheets/application"
 
 window.Noty = require('noty');
@@ -45,6 +44,11 @@ document.addEventListener('turbolinks:load', () => {
 
     element.classList.add('d-none')
     element.previousElementSibling.classList.remove('d-none')
+  })
+  $(document).ready(function () {
+    if(notebook_id){
+     $("#notebook-" + notebook_id).collapse('show')
+    }
   })
 })
 

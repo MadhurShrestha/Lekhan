@@ -11,7 +11,7 @@
 <div class="row">
   <% @notebooks.each do |notebook| %>
     <div class="col-md-3">
-      <div class="card notebook-card mb-4 ">
+      <div class="card notebook-card mb-4 shadow">
         <div class="card-body">
           <div class='card-title d-flex justify-content-between'>
             <h5><%= link_to notebook.title,notebook %></h5>
@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="card-footer">
-          <small class="text-muted "><b>Last modified at <%= notebook.updated_at.strftime("%A, %B, %e, %Y") %></b></small>
+          <small class="text-muted ">Last modified at <%= notebook.updated_at.strftime("%A, %B, %e, %Y") %></small>
         </div>
       </div>
     </div>

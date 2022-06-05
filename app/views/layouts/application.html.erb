@@ -27,12 +27,12 @@
   </head>
   <body id="page-top">
     <%= render 'shared/messages' %>
-    <%= render 'shared/navbar' %>
     <div id="wrapper">
       <%= render "shared/sidebar" if user_signed_in? %>
-      <div id="content-wrapper" class="d-flex flex-column pt-2">
+      <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
         <div id="content">
+          <%= render 'shared/navbar' if user_signed_in? %>
           <div class="container-fluid">
             <%= render 'shared/breadcrumbs' if user_signed_in? %>
 
@@ -42,5 +42,6 @@
       </div>
     </div>
     <%= render 'shared/footer' %>
+    <%= render 'shared/modals' %>
   </body>
 </html>

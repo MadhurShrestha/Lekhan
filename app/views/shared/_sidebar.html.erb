@@ -1,63 +1,35 @@
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
   <!-- Sidebar - Brand -->
-
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+    <%= image_tag("logo.png",width:"180", height:"" ,alt:"") %>
+  </a>
   <!-- Divider -->
   <hr class="sidebar-divider my-0">
-  <br>
-  <!-- Divider -->
-  <hr class="sidebar-divider">
-  <!-- Heading -->
-  <div class="sidebar-heading"> New Notebook
-    <div class="buttons ">
-      <%= link_to new_notebook_path, class: 'btn btn-outline-info',data: {toggle: 'modal', target: '#newNotebookModal', remote: true} do %>
-        <i class="fa-solid fa-circle-plus "></i>
-      <% end %>
-    </div>
-  </div>
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"> <i class="fa-solid fa-book-journal-whills"></i>Notebooks </a>
-    <a class="nav-link collapsed" href="/notebooks" aria-expanded="true" aria-controls="collapseTwo"> <i class="fa-solid fa-book-journal-whills"></i>My Notebooks </a>
-
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded">
-        <% @user_notebooks.each do |notebook| %>
-          <div class="btn-group"> <i class="fa-solid fa-book"></i>
-            <%= link_to notebook.title,notebook,class: "dropdown-item "%><br>
-          </div>
-        <% end %>
+    <h5 class="pl-4 pt-4 text-white">All Notebooks</h5>
+  </li>
+  <li class="nav-item">
+    <% @user_notebooks.each do |notebook| %>
+      <a class="nav-link collapsed" href="#notebook-<%= notebook.id %>" data-toggle="collapse" data-target="#notebook-<%= notebook.id %>" aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fa-solid fa-book-journal-whills"></i><%= (notebook.title || 'No title').truncate(20) %>
+      </a>
+      <div id="notebook-<%= notebook.id %>" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <% notebook.pages.each do |page| %>
+            <%= active_link_to [notebook, page], class: "collapse-item" do %>
+              <i class="fa fa-file-text"></i> <%= (page.title || 'No title').truncate(20) %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </li>
   <div class="sidebar-card d-none d-lg-flex">
     <p class="text-center mb-2"><strong>Journal It</strong>: Express your thoughts and feelings freely.</p>
   </div>
 </ul>
-
-<!-- Modal -->
-<div class="modal fade" id="newNotebookModal" tabindex="-1" aria-labelledby="newNotebookModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="newNotebookModalLabel">New Notebook</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="container">
-        <%= form_with(model: Notebook.new) do |form| %>
-          <div class="field mb-2 mt-2">
-            <%= form.text_field :title, class: 'form-control', placeholder: 'Title' %>
-          </div>
-          <div class="modal-footer">
-            <div class="actions">
-              <%= form.submit class: 'btn btn-primary'%>
-            </div>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+<script type="text/javascript">
+  window.notebook_id = '<%= params[:notebook_id] ? params[:notebook_id] : nil %>'
+</script>
