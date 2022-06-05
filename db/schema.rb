@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 2022_06_04_181342) do
     t.bigint "notebook_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.binary "content"
+    t.text "content"
     t.string "stripped_content"
     t.index ["notebook_id"], name: "index_pages_on_notebook_id"
   end

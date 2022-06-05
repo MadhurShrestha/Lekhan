@@ -1,8 +1,8 @@
 <div class='row'>
-    <div class='col-md-12'>
-        <%= link_to new_notebook_path,class: 'btn btn-primary float-right mb-3' do %>
-            <i class="fas fa-plus "></i> Add Notebook
-        <% end %><!-- Main Content -->
+    <div class='col-md-12 '>
+        <%= link_to new_notebook_path, class: 'btn btn-primary float-right',data: {toggle: 'modal', target: '#newNotebookModal', remote: true} do %>
+        <i class="fa-solid fa-circle-plus ">Add Notebook</i>
+      <% end %>
     </div>
 </div>
 <div class="row">
