@@ -16,7 +16,7 @@ document.addEventListener('turbolinks:load', function (event) {
           ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
           [{ 'align': [] }],
           [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-          [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+          [{ 'script': 'sub'}, { 'script': 'super' },'code', 'link'],      // superscript/subscript
           [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
           [{ 'direction': 'rtl' }],                         // text direction
           [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
